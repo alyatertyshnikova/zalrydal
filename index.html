@@ -1,3 +1,12 @@
+<?php
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -23,7 +32,7 @@ and open the template in the editor.
                 display: block; 
                 margin: 0 auto; 
             } 
-            input[name="uname"]{
+            input[name="name"]{
                 position: absolute;
                 left: 43%;
                 top: 43%;
@@ -33,7 +42,7 @@ and open the template in the editor.
                 background-color:#008CDC;
                 opacity: 0.5;
             }
-            input[name="psw"]{
+            input[name="password"]{
                 position: absolute;
                 left: 43%;
                 top: 48%;
@@ -59,12 +68,15 @@ and open the template in the editor.
     <body style="background-color: #008CDC" > 
         <img src="images/whales.gif" class="center-img"> 
         <form action="users.php" class="center-img"> 
-            <input type="text" placeholder="Enter Username" name="uname" required> 
-            <input type="password" placeholder="Enter Password" name="psw" required> 
+            <input type="text" placeholder="Enter Username" name="name" required> 
+            <input type="password" placeholder="Enter Password" name="password" required> 
         </form> 
         
-        <button type='button' onclick='location.href="http://localhost:8888/zalrydal/main.html"' id='login'>
+        <button type='button' onclick='location.href="main.html"' id='login'>
             Log In
+        </button>
+        <button type='button' onclick='location.href="signup.html"' id='signup'>
+            Sign Up
         </button>
     </body> 
 </html>

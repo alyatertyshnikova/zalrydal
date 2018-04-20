@@ -45,10 +45,21 @@ and open the template in the editor.
                 background-color:#008CDC;
                 opacity: 0.5;
             }
-            #login{
+            input[name="submit"]{
                 position: absolute;
                 left: 43%;
-                top: 53%;
+                top: 54%;
+                font-size: 20px;
+                color:black;
+                font-family:'Reckless Sample';
+                background-color:#008CDC;
+                opacity: 0.5;
+            }
+            #signup{
+                position: absolute;
+                left: 51%;
+                top: 54%;
+                width: 100px;
                 font-size: 20px;
                 color:black;
                 font-family:'Reckless Sample';
@@ -60,13 +71,14 @@ and open the template in the editor.
     </head>
     <body style="background-color: #008CDC" > 
         <img src="images/whales.gif" class="center-img"> 
-        <form action="users.php" class="center-img"> 
+        <form action="login.php" class="center-img" method="POST"> 
             <input type="text" placeholder="Enter Username" name="uname" required> 
             <input type="password" placeholder="Enter Password" name="psw" required> 
+            <input type="submit" name="submit" value="Log in">
         </form> 
         
-        <button type='button' onclick='location.href="http://localhost:8888/zalrydal/main.html"' id='login'>
-            Log In
+         <button type='button' onclick='location.href="signup.html"' id='signup'>
+            Sign Up
         </button>
     </body> 
 </html>

@@ -7,7 +7,7 @@ if (isset($_POST['registration'])) {
         unset($nameError);
     }
     $name = ($_POST['name']);
-    $password = ($_POST['password']);
+    $password = ($_POST['psw']);
     $confirmPassword = ($_POST['samepassword']);
     $email = ($_POST['email']);
     $error = false;

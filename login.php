@@ -1,6 +1,6 @@
 <?php
 // Страница авторизации
-
+include ('config.php');
 // Функция для генерации случайной строки
 function generateCode($length=6) {
     $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHI JKLMNOPRQSTUVWXYZ0123456789";
@@ -12,13 +12,10 @@ function generateCode($length=6) {
     return $code;
 }
 
-// Соединямся с БД
-$link=mysqli_connect("localhost", "user", "0.0002", "usebase");
-
 if(isset($_POST['submit']))
 {
     // Вытаскиваем из БД запись, у которой логин равняется введенному
-    $query = mysqli_query($link,"SELECT id, password FROM users WHERE name='".mysqli_real_escape_string($link,$_POST['uname'])."' LIMIT 1");
+    $query = mysqli_query($link,"SELECT id, password FROM users WHERE name='".mysqli_real_escape_string($link,$_POST['name'])."' LIMIT 1");
     $data = mysqli_fetch_assoc($query);
 
     // Сравниваем пароли

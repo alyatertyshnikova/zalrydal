@@ -1,20 +1,4 @@
-<?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-?>
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!-- Hello, Irochka-->
-<!-- Hello, Alinochka-->
 <html>
     <head>
         <title>TODO supply a title</title>
@@ -30,21 +14,22 @@ and open the template in the editor.
                 font-weight: normal;
                 src: local('Reckless Sample'), url('reckless_sample.woff') format('woff');
             }
+
             .center-img { 
                 display: block; 
                 margin: 0 auto; 
             } 
             input[name="name"]{
                 position: absolute;
-                left: 43%;
-                top: 43%;
+                left: 500px;
+                top: 500px;
                 font-size: 20px;
                 color:black;
                 font-family:'Reckless Sample';
                 background-color:#008CDC;
                 opacity: 0.5;
             }
-            input[name="password"]{
+            input[name="psw"]{
                 position: absolute;
                 left: 43%;
                 top: 48%;
@@ -79,19 +64,17 @@ and open the template in the editor.
         </style>   
     </head>
     <body style="background-color: #008CDC" > 
-        <audio src="audio/all_through_the_night.wav" autoplay loop>
+    <audio src="audio/all_through_the_night.wav" autoplay loop>
     </audio>
         <img src="images/whales.gif" class="center-img"> 
-
-
         <form action="login.php" class="center-img" method="POST"> 
-            <input type="text" placeholder="Enter Username" name="name" required> 
-            <input type="password" placeholder="Enter Password" name="psw" required> 
-            <input type="submit" name="submit" value="Log in">
+                <input type="text" placeholder="Enter Username" name="name" required> 
+                <input type="password" placeholder="Enter Password" name="psw" required> 
+                <input type="submit" name="submit" value="Log in">
         </form> 
+            <button type='button' onclick='location.href = "signup.html"' id='signup'>
+                Sign Up
+            </button>
         
-         <button type='button' onclick='location.href="signup.html"' id='signup'>
-            Sign Up
-         </button>
     </body> 
 </html>

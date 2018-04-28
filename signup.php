@@ -1,17 +1,15 @@
 <?php
+
 include ('config.php');
 session_start();
 
 if (isset($_POST['registration'])) {
-    if(!empty($nameError)){
-        unset($nameError);
-    }
+    global $error, $nameError;
     $name = ($_POST['name']);
     $password = ($_POST['psw']);
     $confirmPassword = ($_POST['samepassword']);
     $email = ($_POST['email']);
     $error = false;
-
     if (empty($name) || strlen($name) > 30) {
         $error = true;
         $nameError = "Name should have from 0 to 30 length";
@@ -26,7 +24,7 @@ if (isset($_POST['registration'])) {
         $error = true;
         $nameError = "Password should contain only digits, characters or underscore";
     }
-    if ($password!=$confirmPassword) {
+    if ($password != $confirmPassword) {
         $error = true;
         echo $password;
         echo $confirmPassword;
@@ -36,30 +34,25 @@ if (isset($_POST['registration'])) {
         $error = true;
         $nameError = "Email should be validate";
     } else {
-        $emailQuery = "SELECT email FROM users WHERE email=$email";
+        $emailQuery = "SELECT email FROM users WHERE email='$email'";
         $result = mysqli_query($link, $emailQuery);
-        $resultLength = mysqli_num_rows($result);
-        if ($resultLength != 0) {
+        if (mysqli_num_rows($result) != 0) {
             $error = true;
-            $errorName = "Email is already in use";
+            $nameError = "Email is already in use";
         }
     }
     if (!$error) {
         $addQuery = "INSERT INTO users(name, password, email) VALUES('$name', '$password', '$email');";
         $result = mysqli_query($link, $addQuery);
-        if(!$result)            echo 'no';
         if ($result) {
             unset($name);
             unset($email);
             unset($pass);
+            header('Location: index.html');
         }
-        header('Location: index.html');
     } else {
+        header('Location: signup.html');
         echo $nameError;
     }
 }
-<<<<<<< HEAD
 ?>
-=======
-?>
->>>>>>> 19a18a7ce0c87181414748690b9e03b0a64c7cd2

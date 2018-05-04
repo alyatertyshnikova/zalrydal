@@ -12,5 +12,23 @@ and open the template in the editor.
     </head>
     <body style="background-image:url('images/waves.gif')">
         <img src='images/worldmap.png'>
+        <audio id="2010" src="audio/2010/all_through_the_night.wav"> 
+        </audio>
+        <audio id="1990" src="audio/1990/acqua_e_sale.mp3">
+        </audio>
+        <input type="image" src="images/krestik.png" onclick='playMusic()'>
+        <input type="range" id="years" min="1990" max="2010" step="10">
+        <p id="one"></p>
+        <script>
+            var year=document.getElementById("years");
+            var audio;
+            function playMusic(){
+                if(audio!=null){
+                    audio.pause();
+            }
+                 audio=document.getElementById(year.value);
+                 audio.play(); 
+            }
+        </script>
     </body>
 </html>

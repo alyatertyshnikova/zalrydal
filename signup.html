@@ -72,9 +72,10 @@
             }
         </style>
     </head>
-    <body style ="background-image: url(images/octopus.gif)">
-        <form action="signup.php" class="center-img" method="post">
-            <span><?php echo $nameError; ?></span>
+      <body style ="background-image: url(images/octopus.gif)">
+        <form action="signup.php" class="center-img" method="post"> 
+                   <?php $string="Hello";
+                   echo $string;?> 
             <input type="text" placeholder="Enter Username" name="name" required>    
             <input type="password" placeholder="Enter Password" name="psw" required>
             <input type="password" placeholder="Repeat Password" name="samepassword" required>

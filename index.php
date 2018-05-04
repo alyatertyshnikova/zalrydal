@@ -84,18 +84,27 @@
     <body style="background-color: #008CDC" > 
         <audio src="audio/all_through_the_night.wav" autoplay loop>
         </audio>
+        <?php
+        include ('login.php');
+        if( isset($_SESSION['Error']) ){
+            echo $_SESSION['Error'];
+            unset($_SESSION['Error']);
+        }
+        ?>
         <div class="block1">
-            <img src="images/whales.gif" class="center-img"> 
+            <img src="images/whales.gif" class="center-img">
             <div class="block2">
                 <form action="login.php" class="center-img" method="POST"> 
                     <input type="text" placeholder="Enter Username" name="name" required> 
                     <input type="password" placeholder="Enter Password" name="psw" required> 
                     <input type="submit" name="submit" value="Log in">
                 </form> 
-                <button type='button' onclick='location.href = "signup.html"' id='signup'>
+                <button type='button' onclick='location.href = "signup-int.php"' id='signup'>
                     Sign Up
                 </button>
+
             </div>
+
         </div>
     </body> 
 </html>

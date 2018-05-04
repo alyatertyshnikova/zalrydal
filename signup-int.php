@@ -15,7 +15,7 @@
                 font-weight: normal;
                 src: local('Reckless Sample'), url('reckless_sample.woff') format('woff');
             }
-            
+
             .center-img { 
                 display: block; 
                 margin: 0 auto; 
@@ -23,7 +23,7 @@
             input[name="name"]{
                 position: absolute;
                 left: 43%;
-                top: 38%;
+                top: 200px;
                 font-size: 20px;
                 color:black;
                 font-family:'Reckless Sample';
@@ -33,7 +33,7 @@
             input[name="psw"]{
                 position: absolute;
                 left: 43%;
-                top: 43%;
+                top: 240px;
                 font-size: 20px;
                 color:black;
                 font-family:'Reckless Sample';
@@ -43,7 +43,7 @@
             input[name="samepassword"]{
                 position: absolute;
                 left: 43%;
-                top: 48%;
+                top: 280px;
                 font-size: 20px;
                 color:black;
                 font-family:'Reckless Sample';
@@ -53,7 +53,7 @@
             input[name="email"]{
                 position: absolute;
                 left: 43%;
-                top: 53%;
+                top: 320px;
                 font-size: 20px;
                 color:black;
                 font-family:'Reckless Sample';
@@ -63,7 +63,7 @@
             input[name="registration"]{
                 position: absolute;
                 left: 43%;
-                top: 59%;
+                top: 360px;
                 font-size: 20px;
                 color:black;
                 font-family:'Reckless Sample';
@@ -72,10 +72,15 @@
             }
         </style>
     </head>
-      <body style ="background-image: url(images/octopus.gif)">
+    <body style ="background-image: url(images/octopus.gif)">
+        <?php
+        include ('signup.php');
+        if (isset($_SESSION['Error'])) {
+            echo $_SESSION['Error'];
+            unset($_SESSION['Error']);
+        }
+        ?>
         <form action="signup.php" class="center-img" method="post"> 
-                   <?php $string="Hello";
-                   echo $string;?> 
             <input type="text" placeholder="Enter Username" name="name" required>    
             <input type="password" placeholder="Enter Password" name="psw" required>
             <input type="password" placeholder="Repeat Password" name="samepassword" required>
@@ -84,6 +89,3 @@
         </form>
     </body>
 </html>
-        <!--<?php if(!$error){?>
-        <p><?php echo $nameError; ?></p>
-        <?php}?>-->

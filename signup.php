@@ -1,7 +1,9 @@
 <?php
 
 include ('config.php');
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 if (isset($_POST['registration'])) {
     global $error, $nameError;
@@ -38,7 +40,8 @@ if (isset($_POST['registration'])) {
         $result = mysqli_query($link, $emailQuery);
         if (mysqli_num_rows($result) != 0) {
             $error = true;
-            $nameError = "Email is already in use";
+            $_SESSION['Error'] = "This email is already in use.";
+            header('Location: signup-int.php');
         }
     }
     if (!$error) {
@@ -48,10 +51,10 @@ if (isset($_POST['registration'])) {
             unset($name);
             unset($email);
             unset($pass);
-            header('Location: index.html');
+            header('Location: main.html');
         }
     } else {
-        header('Location: signup.html');
+        header('Location: signup-int.php');
         echo $nameError;
     }
 }

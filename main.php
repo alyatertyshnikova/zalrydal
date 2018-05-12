@@ -26,7 +26,7 @@ and open the template in the editor.
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
 
-    <body style="background-image:url('images/waves.gif')">
+    <body style="background-image:url('images/waves.jpg')">
         <div class="block1">
             <img src='images/worldmap.png'>
         </div>

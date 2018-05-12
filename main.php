@@ -23,7 +23,9 @@ and open the template in the editor.
                 top:145px;
             }
         </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
+
     <body style="background-image:url('images/waves.gif')">
         <div class="block1">
             <img src='images/worldmap.png'>
@@ -36,13 +38,41 @@ and open the template in the editor.
             <input type="submit" name="exit" value="Log out">
         </form>
         <script>
-            var ext = ".mp3";
-            var year = document.getElementById("years");
-            var audio;
-            function playMusic(arg) {
-                var country = arg.id;
-                var path = "audio/" + country + "/";
-            }
-        </script>
+                var ext = ".mp3";
+                var year = document.getElementById("years");
+                var audio;
+
+                function getRandomInt(min, max) {
+                    return Math.floor(Math.random() * (max - min + 1)) + min;
+                }
+
+                function playMusic(arg) {
+                    var country = arg.id;
+                    var path = "audio/" + year.value + "/" + country + "/";
+                    $.ajax({
+                        type: "POST",
+                        url: "count_files.php",
+                        data: {path: path},
+                        success: function (count) {
+                            //alert(count);
+                            //document.write(count);
+                            if (count != 0)
+                            {
+                                var rand = getRandomInt(1, count);
+                                if (audio != null) {
+                                    audio.pause();
+                                }
+                                audio = path + rand + ext;
+                                alert(audio);
+                                audio.play();
+                            } else
+                            {
+                                alert("Sorry, there was no music in this country this year :(");
+                            }
+                        }
+                    });
+
+                }
+            </script>
     </body>
 </html>

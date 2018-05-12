@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<?php
+if (isset($_COOKIE['cookie'])) {
+    header('Location: main.php');
+} 
+ob_start();
+?>
 <html>
     <head>
         <title>TODO supply a title</title>
@@ -20,7 +26,7 @@
                 display: block; 
                 margin: 0 auto; 
             } */
-            input[name="name"]{
+            input[name="email"]{
                 position: absolute;
                 left:0px;
                 top:0px;
@@ -86,7 +92,7 @@
         </audio>
         <?php
         include ('login.php');
-        if( isset($_SESSION['Error']) ){
+        if (isset($_SESSION['Error'])) {
             echo $_SESSION['Error'];
             unset($_SESSION['Error']);
         }
@@ -95,16 +101,14 @@
             <img src="images/whales.gif" class="center-img">
             <div class="block2">
                 <form action="login.php" class="center-img" method="POST"> 
-                    <input type="text" placeholder="Enter Username" name="name" required> 
+                    <input type="text" placeholder="Enter Email" name="email" required> 
                     <input type="password" placeholder="Enter Password" name="psw" required> 
                     <input type="submit" name="submit" value="Log in">
                 </form> 
                 <button type='button' onclick='location.href = "signup-int.php"' id='signup'>
                     Sign Up
                 </button>
-
             </div>
-
         </div>
     </body> 
 </html>

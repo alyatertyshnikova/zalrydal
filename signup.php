@@ -19,7 +19,7 @@ if (isset($_POST['registration'])) {
         $error = true;
         $nameError = "Name should contain only digits, characters or underscore";
     }
-    if (empty($password) || strlen($password) > 30) {
+    if (empty($password)) {
         $error = true;
         $nameError = "Password should have from 0 to 30 length";
     } else if (!preg_match("/\w+/", $password)) {
@@ -28,8 +28,6 @@ if (isset($_POST['registration'])) {
     }
     if ($password != $confirmPassword) {
         $error = true;
-        echo $password;
-        echo $confirmPassword;
         $nameError = "Passwords are not the same";
     }
     if (empty($email) || !filter_var(FILTER_VALIDATE_EMAIL)) {
@@ -45,7 +43,9 @@ if (isset($_POST['registration'])) {
         }
     }
     if (!$error) {
-        $addQuery = "INSERT INTO users(name, password, email) VALUES('$name', '$password', '$email');";
+        $options=[cost=>12];
+        $hash= password_hash($password, PASSWORD_BCRYPT);
+        $addQuery = "INSERT INTO users(name, password, email) VALUES('$name', '$hash', '$email');";
         $result = mysqli_query($link, $addQuery);
         if ($result) {
             unset($name);

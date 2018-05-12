@@ -62,8 +62,10 @@ and open the template in the editor.
                                 if (audio != null) {
                                     audio.pause();
                                 }
-                                audio = path + rand + ext;
-                                alert(audio);
+                                else{
+                                    audio=new Audio();
+                                }
+                                audio.src = path + rand + ext;
                                 audio.play();
                             } else
                             {

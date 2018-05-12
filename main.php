@@ -29,12 +29,15 @@ and open the template in the editor.
     <body style="background-image:url('images/waves.gif')">
         <div class="block1">
             <img src='images/worldmap.png'>
-            <div class="Russia">
-                <input type="image" id="Russia" src='images/krestik.png' onclick='playMusic(this)'>
-            </div>
-            <input type="range" id="years" min="1990" max="2010" step="10">
-
-            <script>
+        </div>
+        <div class="Russia">
+            <input type="image" id="Russia" src='images/krestik.png' onclick='playMusic(this)'>
+        </div>
+        <input type="range" id="years" min="1990" max="2010" step="10">
+        <form action="logout.php" method="post"> 
+            <input type="submit" name="exit" value="Log out">
+        </form>
+        <script>
                 var ext = ".mp3";
                 var year = document.getElementById("years");
                 var audio;
@@ -60,7 +63,7 @@ and open the template in the editor.
                                     audio.pause();
                                 }
                                 audio = new Audio(path + rand + ext);
-                                alert(audio);
+
                                 audio.play();
                             } else
                             {
@@ -71,6 +74,5 @@ and open the template in the editor.
 
                 }
             </script>
-        </div>
     </body>
 </html>

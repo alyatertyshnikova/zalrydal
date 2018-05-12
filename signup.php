@@ -51,7 +51,7 @@ if (isset($_POST['registration'])) {
             unset($name);
             unset($email);
             unset($pass);
-            header('Location: main.html');
+            header('Location: main.php');
         }
     } else {
         header('Location: signup-int.php');

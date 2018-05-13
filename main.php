@@ -198,7 +198,7 @@ and open the template in the editor.
             <input type="image" src='images/gramophone2.png' onclick='playOrPause()'>
         </div>
             <form action="logout.php" method="post"> 
-                <p><input type="image" src="images/coda2.png" alt="Submit" id="exit"></p>
+                <p><input type="image" src="images/coda.png" alt="Submit" id="exit"></p>
             </form>
 
 

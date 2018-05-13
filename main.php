@@ -31,6 +31,7 @@ and open the template in the editor.
                 left:0%;
                 height: 20px;
                 width: 20px;
+                outline: none;
             }
 
             #exit{
@@ -63,11 +64,10 @@ and open the template in the editor.
                 appearance: none;
                 width: 30px;
                 height: 90px;
-                background: url('images/clef1.png');
+                background: url('images/clef3.png');
                 background-size: 30px 90px;
             }   
             .block1{
-                top:50px;
                 width:1357px;
                 height:628px;
                 margin: auto;
@@ -82,43 +82,43 @@ and open the template in the editor.
             #Ukraine{
                 position:absolute;
                 left:670px;
-                top:130px;
+                top:125px;
                 outline:none;
             }
             #Belarus{
                 position:absolute;
                 left:655px;
-                top:110px;
+                top:105px;
                 outline:none;
             }
             #Britain{
                 position:absolute;
                 left:544px;
-                top:112px;
+                top:108px;
                 outline:none;
             }
             #Island{
                 position:absolute;
                 left:500px;
-                top:60px;
+                top:55px;
                 outline:none;
             }
             #France{
                 position:absolute;
                 left:560px;
-                top:140px;
+                top:135px;
                 outline:none;
             }
             #Germany{
                 position:absolute;
                 left:590px;
-                top:120px;
+                top:115px;
                 outline:none;
             }
             #Italy{
                 position:absolute;
-                left:600px;
-                top:155px;
+                left:597px;
+                top:150px;
                 outline:none;
             }
             #USA{
@@ -141,8 +141,8 @@ and open the template in the editor.
             }
             #NewZeland{
                 position:absolute;
-                left:1200px;
-                top:545px;
+                left:1220px;
+                top:525px;
                 outline:none;
             }
             #SouthKorea{
@@ -170,21 +170,21 @@ and open the template in the editor.
     <body style="background-image:url('images/waves.jpg')">
         <div class="block1">
             <img src='images/worldmap.png'>
-            <input type="image" id="Russia" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
-            <input type="image" id="Ukraine" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
-            <input type="image" id="Belarus" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
-            <input type="image" id="Britain" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
-            <input type="image" id="Island" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
-            <input type="image" id="France" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
-            <input type="image" id="Germany" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
-            <input type="image" id="Italy" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
-            <input type="image" id="USA" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
-            <input type="image" id="Canada" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
-            <input type="image" id="Australia" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
-            <input type="image" id="NewZeland" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
-            <input type="image" id="SouthKorea" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
-            <input type="image" id="China" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
-            <input type="image" id="Japan" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
+            <input type="image" id="Russia" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="Ukraine" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="Belarus" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="Britain" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="Island" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="France" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="Germany" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="Italy" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="USA" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="Canada" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="Australia" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="NewZeland" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="SouthKorea" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="China" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="Japan" name='country' src='images/note.png' onclick='playMusic(this)'>
         </div>
         <div class="slidercontainer" id="container">
             <input type="range" min="1990" max="2010" step="10" class="slider" id="years" list="ticks"
@@ -199,7 +199,7 @@ and open the template in the editor.
             <input type="image" src='images/gramophone2.png' onclick='playOrPause()'>
         </div>
             <form action="logout.php" method="post"> 
-                <p><input type="image" src="images/coda2.png" alt="Submit" id="exit"></p>
+                <p><input type="image" src="images/coda.png" alt="Submit" id="exit"></p>
             </form>
 
 

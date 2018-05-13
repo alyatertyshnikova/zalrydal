@@ -63,11 +63,10 @@ and open the template in the editor.
                 appearance: none;
                 width: 30px;
                 height: 90px;
-                background: url('images/clef1.png');
+                background: url('images/clef.png');
                 background-size: 30px 90px;
             }   
             .block1{
-                top:50px;
                 width:1357px;
                 height:628px;
                 margin: auto;
@@ -83,28 +82,28 @@ and open the template in the editor.
             #Ukraine{
                 position:absolute;
                 left:670px;
-                top:130px;
+                top:125px;
                 outline:none;
                 visibility:visible;
             }
             #Belarus{
                 position:absolute;
                 left:655px;
-                top:110px;
+                top:105px;
                 outline:none;
                 visibility:hidden;
             }
             #Britain{
                 position:absolute;
                 left:544px;
-                top:112px;
+                top:108px;
                 outline:none;
                 visibility:visible;
             }
             #Island{
                 position:absolute;
                 left:500px;
-                top:60px;
+                top:55px;
                 outline:none;
                 visibility:visible;
             }
@@ -125,7 +124,7 @@ and open the template in the editor.
             #Italy{
                 position:absolute;
                 left:600px;
-                top:155px;
+                top:150px;
                 outline:none;
                 visibility:hidden;
             }
@@ -152,8 +151,8 @@ and open the template in the editor.
             }
             #NewZeland{
                 position:absolute;
-                left:1200px;
-                top:545px;
+                left:1225px;
+                top:520px;
                 outline:none;
                 visibility:visible;
             }
@@ -183,6 +182,9 @@ and open the template in the editor.
                 left:10%;
                 top:10%;
                 visibility: hidden;
+            }
+            #gramophone{
+                outline:none;
             }
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -222,10 +224,10 @@ and open the template in the editor.
             </video>
         </div>
         <div id="player">
-            <input type="image" src='images/gramophone2.png' onclick='playOrPause()'>
+            <input type="image" id='gramophone' src='images/gramophone2.png' onclick='playOrPause()'>
         </div>
         <form action="logout.php" method="post"> 
-            <input type="image" src="images/coda2.png" alt="Submit" id="exit">
+            <input type="image" src="images/coda.png" alt="Submit" id="exit">
         </form>
 
 
@@ -296,6 +298,9 @@ and open the template in the editor.
                             var rand = getRandomInt(1, count);
                             if (audio != null) {
                                 audio.pause();
+                            }
+                            if (!video.paused){
+                                video.pause();
                             }
                             audio = new Audio(path + rand + ext);
                             audio.play();

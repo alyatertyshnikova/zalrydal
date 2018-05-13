@@ -73,8 +73,8 @@
         </style>
     </head>
     <body style ="background-image: url(images/octopus.gif)">
-        <audio src="audio/all_through_the_night.wav" autoplay loop>
-        </audio>
+        <!--<audio src="audio/all_through_the_night.wav" autoplay loop>
+        </audio>-->
         <?php
         include ('signup.php');
         if (isset($_SESSION['Error'])) {

@@ -1,7 +1,9 @@
 <?php
 
 include ('config.php');
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 if (isset($_POST['registration'])) {
     global $error, $nameError;
@@ -17,7 +19,7 @@ if (isset($_POST['registration'])) {
         $error = true;
         $nameError = "Name should contain only digits, characters or underscore";
     }
-    if (empty($password) || strlen($password) > 30) {
+    if (empty($password)) {
         $error = true;
         $nameError = "Password should have from 0 to 30 length";
     } else if (!preg_match("/\w+/", $password)) {
@@ -26,8 +28,6 @@ if (isset($_POST['registration'])) {
     }
     if ($password != $confirmPassword) {
         $error = true;
-        echo $password;
-        echo $confirmPassword;
         $nameError = "Passwords are not the same";
     }
     if (empty($email) || !filter_var(FILTER_VALIDATE_EMAIL)) {
@@ -38,20 +38,23 @@ if (isset($_POST['registration'])) {
         $result = mysqli_query($link, $emailQuery);
         if (mysqli_num_rows($result) != 0) {
             $error = true;
-            $nameError = "Email is already in use";
+            $_SESSION['Error'] = "This email is already in use.";
+            header('Location: signup-int.php');
         }
     }
     if (!$error) {
-        $addQuery = "INSERT INTO users(name, password, email) VALUES('$name', '$password', '$email');";
+        $options=[cost=>12];
+        $hash= password_hash($password, PASSWORD_BCRYPT);
+        $addQuery = "INSERT INTO users(name, password, email) VALUES('$name', '$hash', '$email');";
         $result = mysqli_query($link, $addQuery);
         if ($result) {
             unset($name);
             unset($email);
             unset($pass);
-            header('Location: index.html');
+            header('Location: main.php');
         }
     } else {
-        header('Location: signup.html');
+        header('Location: signup-int.php');
         echo $nameError;
     }
 }

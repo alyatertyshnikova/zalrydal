@@ -282,6 +282,9 @@ and open the template in the editor.
                             if (audio != null) {
                                 audio.pause();
                             }
+                            if(!video.paused){
+                                video.pause();
+                            }
                             audio = new Audio(path + rand + ext);
                             audio.play();
                         } else

@@ -11,36 +11,60 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <style>
-            .slidecontainer {
-                width: 100%;
-                height: 150px;
+            @font-face {
+                font-family: 'Reckless Sample';
+                font-style: normal;
+                font-weight: normal;
+                src: local('Reckless Sample'), url('reckless_sample.woff') format('woff');
+            }
+            #container{
+                width: 98%;
+                height: 90px;
                 display: inline-block;
                 outline: none;
+                position: fixed;
+                bottom:0%;
             }
+            #player{
+                position: fixed;
+                top:5px;
+                left:0%;
+                height: 20px;
+                width: 20px;
+            }
+
+            #exit{
+                position: fixed;
+                top:10px;
+                right:12px;
+            }
+
             .slider {
                 -webkit-appearance: none;
                 appearance: none;
                 width: 100%;
-                height: 110px;
-                background: url('images/stave4.png');
+                height: 60px;
+                background: url('images/stave9.png');
                 outline: none;
             }
-            
+
             datalist{
                 -webkit-appearance: none;
                 appearance: none;
                 color: black;
+                font-size: 15pt;
                 display: flex;
-               justify-content: space-between; 
-               background: url('images/tik.png');
+                font-family:'Reckless Sample';
+                justify-content: space-between; 
+                background: url('images/tik.png');
             }
             .slider::-webkit-slider-thumb {
                 -webkit-appearance: none;
                 appearance: none;
                 width: 30px;
-                height: 100px;
+                height: 90px;
                 background: url('images/clef1.png');
-                background-size: 30px 100px;
+                background-size: 30px 90px;
             }   
             .block1{
                 width:1357px;
@@ -100,7 +124,7 @@ and open the template in the editor.
                 <input type="image" id="Britain" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
             </div>
         </div>
-        <div class="slidercontainer">
+        <div class="slidercontainer" id="container">
             <input type="range" min="1990" max="2010" step="10" class="slider" id="years" list="ticks"
                    onchange="buttons()">
             <datalist id="ticks">
@@ -109,9 +133,13 @@ and open the template in the editor.
                 <option>2010</option>
             </datalist>
         </div>
-        <form action="logout.php" method="post"> 
-            <input type="submit" name="exit" value="Log out">
-        </form>
+        <div id="player">
+            <input type="image" src='images/gramophone2.png' onclick='playOrPause()'>
+        </div>
+            <form action="logout.php" method="post"> 
+                <p><input type="image" src="images/coda2.png" alt="Submit" id="exit"></p>
+            </form>
+
 
         <script>
             var ext = ".mp3";
@@ -124,13 +152,17 @@ and open the template in the editor.
                     url: "count_files.php",
                     data: {path: path},
                     success: function (count) {
-                        if (count == 0){
+                        if (count == 0) {
                             element.style.visibility = "hidden";
                         } else {
                             element.style.visibility = "visible";
                         }
                     }
                 })
+            }
+
+            function playOrPause() {
+
             }
 
             function buttons() {

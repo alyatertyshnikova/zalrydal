@@ -19,13 +19,35 @@ and open the template in the editor.
             }
             .Russia{
                 position:absolute;
-                left:710px;
-                top:145px;
+                left:685px;
+                top:85px;
+            }
+            #Russia{
+                outline:none;
+            }
+            .Ukraine{
+                position:absolute;
+                left:670px;
+                top:130px;
+            }
+            #Ukraine{
+                outline:none;
+            }
+            .Belarus{
+                position:absolute;
+                left:655px;
+                top:110px;
+            }
+            #Belarus{
+                outline:none;
             }
             .Britain{
                 position:absolute;
                 left:544px;
                 top:112px;
+            }
+            #Britain{
+                outline:none;
             }
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -35,10 +57,16 @@ and open the template in the editor.
         <div class="block1">
             <img src='images/worldmap.png'>
             <div class="Russia">
-                <input type="image" id="Russia" name='country' src='images/krestik.png' onclick='playMusic(this)'>
+                <input type="image" id="Russia" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
+            </div>
+            <div class="Ukraine">
+                <input type="image" id="Ukraine" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
+            </div>
+            <div class="Belarus">
+                <input type="image" id="Belarus" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
             </div>
             <div class="Britain">
-                <input type="image" id="Britain" name='country' src='images/krestik.png' onclick='playMusic(this)'>
+                <input type="image" id="Britain" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
             </div>
         </div>
 

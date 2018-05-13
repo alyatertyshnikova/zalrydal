@@ -73,11 +73,9 @@ and open the template in the editor.
                 <input type="image" id="Britain" name='country' src='images/krestik.png' onclick='playMusic(this)'>
             </div>
         </div>
-        <div class="Russia">
-            <input type="image" id="Russia" src='images/krestik.png' onclick='playMusic(this)'>
-        </div>
         <div class="slidercontainer">
-            <input type="range" min="1990" max="2010" step="10" class="slider" id="years" list="ticks">
+            <input type="range" min="1990" max="2010" step="10" class="slider" id="years" list="ticks"
+                   onchange="buttons()">
             <datalist id="ticks">
                 <option>1990</option>
                 <option>2000</option>

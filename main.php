@@ -21,18 +21,18 @@ and open the template in the editor.
                 -webkit-appearance: none;
                 appearance: none;
                 width: 100%;
-                height: 110px;
-                background: url('images/stave4.png');
+                height: 60px;
+                background: url('images/stave9.png');
                 outline: none;
             }
-            
+
             datalist{
                 -webkit-appearance: none;
                 appearance: none;
                 color: black;
                 display: flex;
-               justify-content: space-between; 
-               background: url('images/tik.png');
+                justify-content: space-between; 
+                background: url('images/tik.png');
             }
             .slider::-webkit-slider-thumb {
                 -webkit-appearance: none;
@@ -40,44 +40,103 @@ and open the template in the editor.
                 width: 30px;
                 height: 100px;
                 background: url('images/clef1.png');
-                background-size: 30px 100px;
+                background-size: 30px 90px;
             }   
             .block1{
+                top:50px;
                 width:1357px;
                 height:628px;
                 margin: auto;
                 position:relative;
             }
-            .Russia{
+            #Russia{
                 position:absolute;
                 left:685px;
                 top:85px;
-            }
-            #Russia{
                 outline:none;
             }
-            .Ukraine{
+            #Ukraine{
                 position:absolute;
                 left:670px;
                 top:130px;
-            }
-            #Ukraine{
                 outline:none;
             }
-            .Belarus{
+            #Belarus{
                 position:absolute;
                 left:655px;
                 top:110px;
-            }
-            #Belarus{
                 outline:none;
             }
-            .Britain{
+            #Britain{
                 position:absolute;
                 left:544px;
                 top:112px;
+                outline:none;
             }
-            #Britain{
+            #Island{
+                position:absolute;
+                left:500px;
+                top:60px;
+                outline:none;
+            }
+            #France{
+                position:absolute;
+                left:560px;
+                top:140px;
+                outline:none;
+            }
+            #Germany{
+                position:absolute;
+                left:590px;
+                top:120px;
+                outline:none;
+            }
+            #Italy{
+                position:absolute;
+                left:600px;
+                top:155px;
+                outline:none;
+            }
+            #USA{
+                position:absolute;
+                left:150px;
+                top:170px;
+                outline:none;
+            }
+            #Canada{
+                position:absolute;
+                left:185px;
+                top:95px;
+                outline:none;
+            }
+            #Australia{
+                position:absolute;
+                left:1085px;
+                top:465px;
+                outline:none;
+            }
+            #NewZeland{
+                position:absolute;
+                left:1200px;
+                top:545px;
+                outline:none;
+            }
+            #SouthKorea{
+                position:absolute;
+                left:1053px;
+                top:177px;
+                outline:none;
+            }
+            #China{
+                position:absolute;
+                left:950px;
+                top:190px;
+                outline:none;
+            }
+            #Japan{
+                position:absolute;
+                left:1093px;
+                top:175px;
                 outline:none;
             }
         </style>
@@ -87,18 +146,21 @@ and open the template in the editor.
     <body style="background-image:url('images/waves.jpg')">
         <div class="block1">
             <img src='images/worldmap.png'>
-            <div class="Russia">
-                <input type="image" id="Russia" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
-            </div>
-            <div class="Ukraine">
-                <input type="image" id="Ukraine" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
-            </div>
-            <div class="Belarus">
-                <input type="image" id="Belarus" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
-            </div>
-            <div class="Britain">
-                <input type="image" id="Britain" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
-            </div>
+            <input type="image" id="Russia" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
+            <input type="image" id="Ukraine" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
+            <input type="image" id="Belarus" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
+            <input type="image" id="Britain" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
+            <input type="image" id="Island" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
+            <input type="image" id="France" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
+            <input type="image" id="Germany" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
+            <input type="image" id="Italy" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
+            <input type="image" id="USA" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
+            <input type="image" id="Canada" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
+            <input type="image" id="Australia" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
+            <input type="image" id="NewZeland" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
+            <input type="image" id="SouthKorea" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
+            <input type="image" id="China" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
+            <input type="image" id="Japan" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
         </div>
         <div class="slidercontainer">
             <input type="range" min="1990" max="2010" step="10" class="slider" id="years" list="ticks"
@@ -124,7 +186,7 @@ and open the template in the editor.
                     url: "count_files.php",
                     data: {path: path},
                     success: function (count) {
-                        if (count == 0){
+                        if (count == 0) {
                             element.style.visibility = "hidden";
                         } else {
                             element.style.visibility = "visible";

@@ -54,6 +54,11 @@ and open the template in the editor.
                 top:145px;
                 outline: none;
             }
+            .Britain{
+                position:absolute;
+                left:544px;
+                top:112px;
+            }
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
@@ -61,6 +66,12 @@ and open the template in the editor.
     <body style="background-image:url('images/waves.jpg')">
         <div class="block1">
             <img src='images/worldmap.png'>
+            <div class="Russia">
+                <input type="image" id="Russia" name='country' src='images/krestik.png' onclick='playMusic(this)'>
+            </div>
+            <div class="Britain">
+                <input type="image" id="Britain" name='country' src='images/krestik.png' onclick='playMusic(this)'>
+            </div>
         </div>
         <div class="Russia">
             <input type="image" id="Russia" src='images/krestik.png' onclick='playMusic(this)'>
@@ -76,11 +87,35 @@ and open the template in the editor.
         <form action="logout.php" method="post"> 
             <input type="submit" name="exit" value="Log out">
         </form>
+
         <script>
             var ext = ".mp3";
             var year = document.getElementById("years");
             var audio;
+            function check_button(element) {
+                var path = "audio/" + year.value + "/" + element.id + "/";
+                $.ajax({
+                    type: "POST",
+                    url: "count_files.php",
+                    data: {path: path},
+                    success: function (count) {
+                        if (count == 0){
+                            element.style.visibility = "hidden";
+                        } else {
+                            element.style.visibility = "visible";
+                        }
+                    }
+                })
+            }
 
+            function buttons() {
+                var countries = document.getElementsByName("country");
+                var countries_array = Array.prototype.slice.call(countries);
+                countries_array.forEach(check_button);
+                //var max = countries.length;
+                //alert(max);
+
+            }
             function getRandomInt(min, max) {
                 return Math.floor(Math.random() * (max - min + 1)) + min;
             }
@@ -93,8 +128,6 @@ and open the template in the editor.
                     url: "count_files.php",
                     data: {path: path},
                     success: function (count) {
-                        //alert(count);
-                        //document.write(count);
                         if (count != 0)
                         {
                             var rand = getRandomInt(1, count);

@@ -1,6 +1,6 @@
 <?php
 $user = 'root';
-$password = '';
+$password = 'root';
 $db = 'users_db';
 $host = 'localhost';
 $port = 3306;

@@ -31,6 +31,7 @@ and open the template in the editor.
                 left:0%;
                 height: 20px;
                 width: 20px;
+                outline: none;
             }
 
             #exit{
@@ -81,43 +82,43 @@ and open the template in the editor.
             #Ukraine{
                 position:absolute;
                 left:670px;
-                top:130px;
+                top:125px;
                 outline:none;
             }
             #Belarus{
                 position:absolute;
                 left:655px;
-                top:110px;
+                top:105px;
                 outline:none;
             }
             #Britain{
                 position:absolute;
                 left:544px;
-                top:112px;
+                top:108px;
                 outline:none;
             }
             #Island{
                 position:absolute;
                 left:500px;
-                top:60px;
+                top:55px;
                 outline:none;
             }
             #France{
                 position:absolute;
                 left:560px;
-                top:140px;
+                top:135px;
                 outline:none;
             }
             #Germany{
                 position:absolute;
                 left:590px;
-                top:120px;
+                top:115px;
                 outline:none;
             }
             #Italy{
                 position:absolute;
-                left:600px;
-                top:155px;
+                left:597px;
+                top:150px;
                 outline:none;
             }
             #USA{
@@ -140,8 +141,8 @@ and open the template in the editor.
             }
             #NewZeland{
                 position:absolute;
-                left:1200px;
-                top:545px;
+                left:1220px;
+                top:525px;
                 outline:none;
             }
             #SouthKorea{

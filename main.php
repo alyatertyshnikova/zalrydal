@@ -78,90 +78,105 @@ and open the template in the editor.
                 left:685px;
                 top:85px;
                 outline:none;
+                visibility:visible;
             }
             #Ukraine{
                 position:absolute;
                 left:670px;
                 top:125px;
                 outline:none;
+                visibility:visible;
             }
             #Belarus{
                 position:absolute;
                 left:655px;
                 top:105px;
                 outline:none;
+                visibility:hidden;
             }
             #Britain{
                 position:absolute;
                 left:544px;
                 top:108px;
                 outline:none;
+                visibility:visible;
             }
             #Island{
                 position:absolute;
                 left:500px;
                 top:55px;
                 outline:none;
+                visibility:visible;
             }
             #France{
                 position:absolute;
                 left:560px;
                 top:135px;
                 outline:none;
+                visibility:visible;
             }
             #Germany{
                 position:absolute;
                 left:590px;
                 top:115px;
                 outline:none;
+                visibility:visible;
             }
             #Italy{
                 position:absolute;
                 left:597px;
                 top:150px;
                 outline:none;
+                visibility:hidden;
             }
             #USA{
                 position:absolute;
                 left:150px;
                 top:170px;
                 outline:none;
+                visibility:visible;
             }
             #Canada{
                 position:absolute;
                 left:185px;
                 top:95px;
                 outline:none;
+                visibility:hidden;
             }
             #Australia{
                 position:absolute;
                 left:1085px;
                 top:465px;
                 outline:none;
+                visibility:hidden;
             }
             #NewZeland{
                 position:absolute;
                 left:1220px;
                 top:525px;
                 outline:none;
+                visibility:visible;
             }
             #SouthKorea{
                 position:absolute;
                 left:1053px;
                 top:177px;
                 outline:none;
+                visibility:hidden;
             }
             #China{
                 position:absolute;
                 left:950px;
                 top:190px;
                 outline:none;
+                visibility:hidden;
             }
             #Japan{
                 position:absolute;
                 left:1093px;
                 top:175px;
                 outline:none;
+                visibility:hidden;
             }
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

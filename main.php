@@ -290,20 +290,15 @@ and open the template in the editor.
                 var path = "audio/" + year.value + "/" + country + "/";
                 $.ajax({
                     type: "POST",
-                    url: "count_files.php",
-                    data: {path: path},
-                    success: function (count) {
-                        if (count != 0)
+                    url: "get_music.php",
+                    data: {year: year.value, country:country},
+                    success: function (result) {
+                        if (result !== false)
                         {
-                            var rand = getRandomInt(1, count);
-                            if (audio != null) {
-                                audio.pause();
-                            }
-                            if (!video.paused){
-                                video.pause();
-                            }
-                            audio = new Audio(path + rand + ext);
-                            audio.play();
+                            alert("s");
+                            alert(result);
+                          // document.write(song);
+                            
                         } else
                         {
                             alert("Sorry, there was no music in this country this year :(");
@@ -315,3 +310,12 @@ and open the template in the editor.
         </script>
     </body>
 </html>
+<!--var rand = getRandomInt(1, result.length);
+                            if (audio != null) {
+                               // audio.pause();
+                            }
+                            if (!video.paused){
+                              //  video.pause();
+                            }
+                            audio = new Audio();
+                            audio.play();-->

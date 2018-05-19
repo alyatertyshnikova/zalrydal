@@ -9,9 +9,14 @@ if (isset($_POST['submit'])) {
     $data = mysqli_fetch_assoc($query);
 
     if (password_verify($_POST['psw'], $data['password'])) {
+        if(strcmp($_POST['email'], "admin")==0){
+            header('Location: admin_page.php');
+        }
+        else{
         $cookie=sha1($_POST['email']);
         setcookie("cookie", $cookie);
         header('Location: main.php');
+        }
     } else {
         $_SESSION['Error'] = "Incorrect login or password.";
         header('Location: index.php');

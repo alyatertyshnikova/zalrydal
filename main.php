@@ -193,21 +193,21 @@ and open the template in the editor.
     <body style="background-image:url('images/waves.jpg')">
         <div class="block1">
             <img src='images/worldmap.png'>
-            <input type="image" id="Russia" name='country' src='images/note.png' onclick='playMusic(this)'>
-            <input type="image" id="Ukraine" name='country' src='images/note.png' onclick='playMusic(this)'>
-            <input type="image" id="Belarus" name='country' src='images/note.png' onclick='playMusic(this)'>
-            <input type="image" id="Britain" name='country' src='images/note.png' onclick='playMusic(this)'>
-            <input type="image" id="Island" name='country' src='images/note.png' onclick='playMusic(this)'>
-            <input type="image" id="France" name='country' src='images/note.png' onclick='playMusic(this)'>
-            <input type="image" id="Germany" name='country' src='images/note.png' onclick='playMusic(this)'>
-            <input type="image" id="Italy" name='country' src='images/note.png' onclick='playMusic(this)'>
-            <input type="image" id="USA" name='country' src='images/note.png' onclick='playMusic(this)'>
-            <input type="image" id="Canada" name='country' src='images/note.png' onclick='playMusic(this)'>
-            <input type="image" id="Australia" name='country' src='images/note.png' onclick='playMusic(this)'>
-            <input type="image" id="NewZeland" name='country' src='images/note.png' onclick='playMusic(this)'>
-            <input type="image" id="SouthKorea" name='country' src='images/note.png' onclick='playMusic(this)'>
-            <input type="image" id="China" name='country' src='images/note.png' onclick='playMusic(this)'>
-            <input type="image" id="Japan" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="Russia" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
+            <input type="image" id="Ukraine" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
+            <input type="image" id="Belarus" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
+            <input type="image" id="Britain" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
+            <input type="image" id="Island" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
+            <input type="image" id="France" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
+            <input type="image" id="Germany" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
+            <input type="image" id="Italy" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
+            <input type="image" id="USA" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
+            <input type="image" id="Canada" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
+            <input type="image" id="Australia" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
+            <input type="image" id="NewZeland" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
+            <input type="image" id="SouthKorea" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
+            <input type="image" id="China" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
+            <input type="image" id="Japan" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
         </div>
         <div class="slidercontainer" id="container">
             <input type="range" min="1990" max="2010" step="10" class="slider" id="years" list="ticks"
@@ -226,6 +226,7 @@ and open the template in the editor.
         <div id="player">
             <input type="image" id='gramophone' src='images/gramophone2.png' onclick='playOrPause()'>
         </div>
+        <input type="image" src="images/vinyl.png" onclick='location.href="help_music.php"'>
         <form action="logout.php" method="post"> 
             <input type="image" style="outline:none;" src="images/coda.png" alt="Submit" id="exit">
         </form>
@@ -295,10 +296,8 @@ and open the template in the editor.
                     success: function (result) {
                         if (result !== false)
                         {
-                            alert("s");
-                            alert(result);
-                          // document.write(song);
-                            
+                            var audio=JSON.parse(result);
+                            alert(audio[0]);                            
                         } else
                         {
                             alert("Sorry, there was no music in this country this year :(");

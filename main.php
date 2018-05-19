@@ -161,7 +161,7 @@ and open the template in the editor.
                 left:1053px;
                 top:177px;
                 outline:none;
-                visibility:hidden;
+                visibility:visible;
             }
             #China{
                 position:absolute;
@@ -227,7 +227,7 @@ and open the template in the editor.
             <input type="image" id='gramophone' src='images/gramophone2.png' onclick='playOrPause()'>
         </div>
         <form action="logout.php" method="post"> 
-            <input type="image" src="images/coda.png" alt="Submit" id="exit">
+            <input type="image" style="outline:none;" src="images/coda.png" alt="Submit" id="exit">
         </form>
 
 

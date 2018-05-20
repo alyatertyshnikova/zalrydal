@@ -10,11 +10,13 @@ if (isset($_POST['submit'])) {
 
     if (password_verify($_POST['psw'], $data['password'])) {
         if(strcmp($_POST['email'], "admin")==0){
-            header('Location: admin_page.php');
+            header('Location: admin/admin_page.php');
         }
         else{
         $cookie=sha1($_POST['email']);
+        $email=$_POST['email'];
         setcookie("cookie", $cookie);
+        setcookie("email", $email);
         header('Location: main.php');
         }
     } else {

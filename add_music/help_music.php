@@ -12,7 +12,7 @@
                 font-family: 'Reckless Sample';
                 font-style: normal;
                 font-weight: normal;
-                src: local('Reckless Sample'), url('reckless_sample.woff') format('woff');
+                src: local('Reckless Sample'), url('../reckless_sample.woff') format('woff');
             }
             input[type="text"]{
                 font-size: 20px;
@@ -41,7 +41,7 @@
                 left: 43%;
                 top: 320px;
             }
-            input[name="sendSong"]{
+            input[name="file"]{
                 font-size: 20px;
                 color:black;
                 font-family:'Reckless Sample';
@@ -51,17 +51,28 @@
                 left: 43%;
                 top: 360px;
             }
+            input[name="sendSong"]{
+                font-size: 20px;
+                color:black;
+                font-family:'Reckless Sample';
+                background-color:#008CDC;
+                opacity: 0.5;
+                position: absolute;
+                left: 43%;
+                top: 400px;
+            }
         </style>
     </head>
-    <body style ="background-image: url(images/octopus.gif)">
-        <audio src="audio/all_through_the_night.wav" autoplay loop>
+    <body style ="background-image: url(../images/octopus.gif)">
+        <audio src="../audio/all_through_the_night.wav" autoplay loop>
         </audio>
-        <form action="send.php" class="center-img" method="post"> 
+        <form action="upload_file.php" class="center-img" enctype="multipart/form-data" method="post"> 
             <input type="text" placeholder="Enter Song name" name="song" required>    
             <input type="text" placeholder="Enter Author name" name="author" required>
             <input type="text" placeholder="Enter Counrty" name="country" required>
             <input type="text" placeholder="Enter Year" name="year" required>
-            <input type="submit" name="sendSong" value="Send">
+                <input type="file" name="file" required/>
+            <input type="submit" name="sendSong" value="Upload">
         </form>
     </body>
 </html>

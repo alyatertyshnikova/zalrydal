@@ -29,8 +29,12 @@ and open the template in the editor.
                 position: fixed;
                 top:5px;
                 left:0%;
-                height: 20px;
-                width: 20px;
+            }
+            
+            #vinyl{
+                position: fixed;
+                top:80px;
+                right:7px;
             }
 
             #exit{
@@ -44,7 +48,7 @@ and open the template in the editor.
                 appearance: none;
                 width: 100%;
                 height: 60px;
-                background: url('images/stave9.png');
+                background: url('images/stave.png');
                 outline: none;
             }
 
@@ -56,7 +60,6 @@ and open the template in the editor.
                 display: flex;
                 font-family:'Reckless Sample';
                 justify-content: space-between; 
-                background: url('images/tik.png');
             }
             .slider::-webkit-slider-thumb {
                 -webkit-appearance: none;
@@ -186,6 +189,9 @@ and open the template in the editor.
             #gramophone{
                 outline:none;
             }
+            #vinyl{
+                outline:none;
+            }
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
@@ -193,21 +199,21 @@ and open the template in the editor.
     <body style="background-image:url('images/waves.jpg')">
         <div class="block1">
             <img src='images/worldmap.png'>
-            <input type="image" id="Russia" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
-            <input type="image" id="Ukraine" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
-            <input type="image" id="Belarus" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
-            <input type="image" id="Britain" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
-            <input type="image" id="Island" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
-            <input type="image" id="France" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
-            <input type="image" id="Germany" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
-            <input type="image" id="Italy" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
-            <input type="image" id="USA" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
-            <input type="image" id="Canada" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
-            <input type="image" id="Australia" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
-            <input type="image" id="NewZeland" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
-            <input type="image" id="SouthKorea" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
-            <input type="image" id="China" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
-            <input type="image" id="Japan" name='country' src='images/krestikk.png' onclick='playMusic(this)'>
+            <input type="image" id="Russia" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="Ukraine" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="Belarus" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="Britain" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="Island" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="France" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="Germany" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="Italy" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="USA" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="Canada" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="Australia" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="NewZeland" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="SouthKorea" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="China" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="Japan" name='country' src='images/note.png' onclick='playMusic(this)'>
         </div>
         <div class="slidercontainer" id="container">
             <input type="range" min="1990" max="2010" step="10" class="slider" id="years" list="ticks"
@@ -224,9 +230,11 @@ and open the template in the editor.
             </video>
         </div>
         <div id="player">
-            <input type="image" id='gramophone' src='images/gramophone2.png' onclick='playOrPause()'>
+            <input type="image" id='gramophone' src='images/gramophone.png' onclick='playOrPause()'>
         </div>
-        <input type="image" src="images/vinyl.png" onclick='location.href="help_music.php"'>
+        <div id='add'>
+            <input type="image" id='vinyl' src="images/vinyl.png" onclick='location.href = "add_music/help_music.php"'>
+        </div>
         <form action="logout.php" method="post"> 
             <input type="image" style="outline:none;" src="images/coda.png" alt="Submit" id="exit">
         </form>
@@ -253,16 +261,15 @@ and open the template in the editor.
             }
 
             var videoPlayer = document.getElementById("videoPlayer");
-            var video=document.getElementById("video");
+            var video = document.getElementById("video");
             function playOrPause() {
                 if (audio == null) {
-                    if (videoPlayer.style.visibility!=="visible") {
+                    if (videoPlayer.style.visibility !== "visible") {
                         videoPlayer.style.visibility = "visible";
                         video.play();
-                    }
-                    else{
+                    } else {
                         video.pause();
-                        video.currentTime=0;
+                        video.currentTime = 0;
                         videoPlayer.style.visibility = "hidden";
                     }
                 } else {
@@ -292,12 +299,12 @@ and open the template in the editor.
                 $.ajax({
                     type: "POST",
                     url: "get_music.php",
-                    data: {year: year.value, country:country},
+                    data: {year: year.value, country: country},
                     success: function (result) {
                         if (result !== false)
                         {
-                            var audio=JSON.parse(result);
-                            alert(audio[0]);                            
+                            var audio = JSON.parse(result);
+                            alert(audio[0]);
                         } else
                         {
                             alert("Sorry, there was no music in this country this year :(");

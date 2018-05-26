@@ -41,7 +41,7 @@
                 left: 43%;
                 top: 320px;
             }
-            input[name="file"]{
+            input[name="fileToUpload"]{
                 font-size: 20px;
                 color:black;
                 font-family:'Reckless Sample';
@@ -66,12 +66,19 @@
     <body style ="background-image: url(../images/octopus.gif)">
         <audio src="../audio/all_through_the_night.wav" autoplay loop>
         </audio>
-        <form action="upload_file.php" class="center-img" enctype="multipart/form-data" method="post"> 
+        <?php
+        include ('send.php');
+        if (isset($_SESSION['Error'])) {
+            echo $_SESSION['Error'];
+            unset($_SESSION['Error']);
+        }
+        ?>
+        <form action="send.php" class="center-img" enctype="multipart/form-data" method="post"> 
             <input type="text" placeholder="Enter Song name" name="song" required>    
             <input type="text" placeholder="Enter Author name" name="author" required>
             <input type="text" placeholder="Enter Counrty" name="country" required>
             <input type="text" placeholder="Enter Year" name="year" required>
-                <input type="file" name="file" required/>
+                <input type="file" name="fileToUpload" id="fileToUpload" required/>
             <input type="submit" name="sendSong" value="Upload">
         </form>
     </body>

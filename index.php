@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <?php
 if (isset($_COOKIE['cookie'])) {
+    $cookie=$_COOKIE['cookie'];
+    $browserInfo= get_browser(NULL, FALSE);
+    $actualCookie= substr($cookie, 0, 8). serialize($browserInfo);
+    if(strcmp($actualCookie, $cookie)==0){
     header('Location: main.php');
+    }
 } 
 ob_start();
 ?>

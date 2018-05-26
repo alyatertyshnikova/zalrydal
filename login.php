@@ -13,10 +13,11 @@ if (isset($_POST['submit'])) {
             header('Location: admin/admin_page.php');
         }
         else{
-        $cookie=sha1($_POST['email']);
         $email=$_POST['email'];
-        setcookie("cookie", $cookie);
-        setcookie("email", $email);
+        $browserInfo= get_browser(NULL, FALSE);
+        $cookie= random_bytes(8).serialize($browserInfo);
+        setcookie("cookie", $cookie, time()+(3600*24*30));
+        setcookie("email", $email, time()+(3600*24*30));
         header('Location: main.php');
         }
     } else {

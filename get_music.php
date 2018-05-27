@@ -6,8 +6,11 @@ if (isset($_POST['year']) && isset($_POST['country'])) {
     $getQuery = "SELECT link, song, author FROM audio WHERE year='$year' AND country='$country'";
     $result = mysqli_query($link, $getQuery);
     $array = mysqli_fetch_all($result);
-    $row=$array[1];
+    $row=$array[2];
     echo json_encode($row);
+}
+else {
+    echo "error";
 }
 ?>
 

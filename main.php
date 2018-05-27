@@ -299,12 +299,17 @@ and open the template in the editor.
                 $.ajax({
                     type: "POST",
                     url: "get_music.php",
-                    data: {year: year.value, country: country},
+                    data: {
+                        year: year.value, 
+                        country: country
+                    },
                     success: function (result) {
                         if (result !== false)
                         {
                             var audio = JSON.parse(result);
-                            alert(audio[0]);
+                            var path = "http://localhost/zalrydal/music/audio/" + audio[0];
+                            var audio = new Audio(path);
+                            audio.play();
                         } else
                         {
                             alert("Sorry, there was no music in this country this year :(");

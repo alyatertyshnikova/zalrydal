@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <?php
 if (isset($_COOKIE['cookie'])) {
-    $cookie=$_COOKIE['cookie'];
-    $browserInfo= get_browser(NULL, FALSE);
-    $actualCookie= substr($cookie, 0, 8). serialize($browserInfo);
-    if(strcmp($actualCookie, $cookie)==0){
-    header('Location: main.php');
+    $cookie = $_COOKIE['cookie'];
+    $browserInfo = get_browser(NULL, FALSE);
+    $actualCookie = substr($cookie, 0, 8) . serialize($browserInfo);
+    if (strcmp($actualCookie, $cookie) == 0) {
+        header('Location: main.php');
     }
-} 
+}
 ob_start();
 ?>
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <script src="sjcl.js"></script>
+
+        <title>Music map</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
@@ -77,6 +79,17 @@ ob_start();
                 background-color:#008CDC;
                 opacity: 0.5;
             }
+            #login{
+                position: absolute;
+                left:0px;
+                top:100px;
+                width: 98px;
+                font-size: 20px;
+                color:black;
+                font-family:'Reckless Sample';
+                background-color:#008CDC;
+                opacity: 0.5;
+            }
             .block1{
                 width:800px;
                 height:600px;
@@ -102,6 +115,7 @@ ob_start();
             unset($_SESSION['Error']);
         }
         ?>
+        
         <div class="block1">
             <img src="images/whales.gif" class="center-img">
             <div class="block2">

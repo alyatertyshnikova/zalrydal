@@ -37,7 +37,7 @@
                     url: "add.php",
                     data: {id:result[0]},
                     success:function(){
-                        deleteMessage();
+                        selector.remove(index);
                     }
                 });
             }

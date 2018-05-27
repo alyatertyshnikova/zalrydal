@@ -9,194 +9,11 @@ and open the template in the editor.
         <title>Music map</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <style>
-            @font-face {
-                font-family: 'Reckless Sample';
-                font-style: normal;
-                font-weight: normal;
-                src: local('Reckless Sample'), url('reckless_sample.woff') format('woff');
-            }
-            #container{
-                width: 98%;
-                height: 90px;
-                display: inline-block;
-                outline: none;
-                position: fixed;
-                bottom:0%;
-            }
-            #player{
-                position: fixed;
-                top:5px;
-                left:0%;
-            }
-            
-            #vinyl{
-                position: fixed;
-                top:80px;
-                right:7px;
-            }
-
-            #exit{
-                position: fixed;
-                top:10px;
-                right:12px;
-            }
-
-            .slider {
-                -webkit-appearance: none;
-                appearance: none;
-                width: 100%;
-                height: 60px;
-                background: url('images/stave.png');
-                outline: none;
-            }
-
-            datalist{
-                -webkit-appearance: none;
-                appearance: none;
-                color: black;
-                font-size: 15pt;
-                display: flex;
-                font-family:'Reckless Sample';
-                justify-content: space-between; 
-            }
-            .slider::-webkit-slider-thumb {
-                -webkit-appearance: none;
-                appearance: none;
-                width: 30px;
-                height: 90px;
-                background: url('images/clef.png');
-                background-size: 30px 90px;
-            }   
-            .block1{
-                width:1357px;
-                height:628px;
-                margin: auto;
-                position:relative;
-            }
-            #Russia{
-                position:absolute;
-                left:685px;
-                top:85px;
-                outline:none;
-                visibility:visible;
-            }
-            #Ukraine{
-                position:absolute;
-                left:670px;
-                top:125px;
-                outline:none;
-                visibility:visible;
-            }
-            #Belarus{
-                position:absolute;
-                left:655px;
-                top:105px;
-                outline:none;
-                visibility:hidden;
-            }
-            #Britain{
-                position:absolute;
-                left:544px;
-                top:108px;
-                outline:none;
-                visibility:visible;
-            }
-            #Island{
-                position:absolute;
-                left:500px;
-                top:55px;
-                outline:none;
-                visibility:visible;
-            }
-            #France{
-                position:absolute;
-                left:560px;
-                top:140px;
-                outline:none;
-                visibility:visible;
-            }
-            #Germany{
-                position:absolute;
-                left:590px;
-                top:120px;
-                outline:none;
-                visibility:visible;
-            }
-            #Italy{
-                position:absolute;
-                left:600px;
-                top:150px;
-                outline:none;
-                visibility:hidden;
-            }
-            #USA{
-                position:absolute;
-                left:150px;
-                top:170px;
-                outline:none;
-                visibility:visible;
-            }
-            #Canada{
-                position:absolute;
-                left:185px;
-                top:95px;
-                outline:none;
-                visibility:hidden;
-            }
-            #Australia{
-                position:absolute;
-                left:1085px;
-                top:465px;
-                outline:none;
-                visibility:hidden;
-            }
-            #NewZeland{
-                position:absolute;
-                left:1225px;
-                top:520px;
-                outline:none;
-                visibility:visible;
-            }
-            #SouthKorea{
-                position:absolute;
-                left:1053px;
-                top:177px;
-                outline:none;
-                visibility:visible;
-            }
-            #China{
-                position:absolute;
-                left:950px;
-                top:190px;
-                outline:none;
-                visibility:hidden;
-            }
-            #Japan{
-                position:absolute;
-                left:1093px;
-                top:175px;
-                outline:none;
-                visibility:hidden;
-            }
-            #videoPlayer{
-                position: fixed;
-                left:10%;
-                top:10%;
-                visibility: hidden;
-            }
-            #gramophone{
-                outline:none;
-            }
-            #vinyl{
-                outline:none;
-            }
-        </style>
+        <link href="mainStyle.css" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
 
-    <body style="background-image:url('images/waves.jpg')">
+    <body style="background-image:url('images/waves.jpg')"  onload="buttons()">
         <div class="block1">
             <img src='images/worldmap.png'>
             <input type="image" id="Russia" name='country' src='images/note.png' onclick='playMusic(this)'>
@@ -215,6 +32,34 @@ and open the template in the editor.
             <input type="image" id="China" name='country' src='images/note.png' onclick='playMusic(this)'>
             <input type="image" id="Japan" name='country' src='images/note.png' onclick='playMusic(this)'>
         </div>
+
+        <div id="genre">
+            <div id="classic">
+                <input type="image" src="images/vinyl.png" onclick="changePosition(this)">
+                <text>classic</text>
+            </div>
+            <div id="folk">
+                <input type="image" src="images/vinyl.png" onclick="changePosition(this)">
+                <text>folk</text>
+            </div>
+            <div id="rap">
+                <input type="image" src="images/vinyl.png" onclick="changePosition(this)">
+                <text>rap</text>
+            </div>
+            <div id="rock">  
+                <input type="image" src="images/vinyl.png" onclick="changePosition(this)">
+                <text>rock</text>
+            </div>
+            <div id="pop">
+                <input type="image" src="images/vinyl.png" onclick="changePosition(this)">
+                <text>pop</text>
+            </div>
+            <div id="jazz">
+                <input type="image" src="images/vinyl.png" onclick="changePosition(this)">
+                <text>jazz</text>
+            </div>
+        </div>
+
         <div class="slidercontainer" id="container">
             <input type="range" min="1990" max="2010" step="10" class="slider" id="years" list="ticks"
                    onchange="buttons()">
@@ -231,9 +76,11 @@ and open the template in the editor.
         </div>
         <div id="player">
             <input type="image" id='gramophone' src='images/gramophone.png' onclick='playOrPause()'>
+            <input type="image" id='play' src='images/play.png' style="visibility: hidden;">
+            <div id='songName'></div>
         </div>
         <div id='add'>
-            <input type="image" id='vinyl' src="images/vinyl.png" onclick='location.href = "add_music/help_music.php"'>
+            <input type="image" id='vinyl' src="images/feather.png" onclick='location.href = "add_music/help_music.php"'>
         </div>
         <form action="logout.php" method="post"> 
             <input type="image" style="outline:none;" src="images/coda.png" alt="Submit" id="exit">
@@ -244,16 +91,19 @@ and open the template in the editor.
             var ext = ".mp3";
             var year = document.getElementById("years");
             var audio;
+            
             function check_button(element) {
-                var path = "audio/" + year.value + "/" + element.id + "/";
+                var genre=getGenre();
                 $.ajax({
                     type: "POST",
-                    url: "count_files.php",
-                    data: {path: path},
-                    success: function (count) {
-                        if (count == 0) {
+                    url: "get_music.php",
+                    data: {year: year.value, country: element.id, genre:genre},
+                    success: function (result) {
+                        if (JSON.parse(result)==null)
+                        {
                             element.style.visibility = "hidden";
-                        } else {
+                        } else
+                        {
                             element.style.visibility = "visible";
                         }
                     }
@@ -262,6 +112,7 @@ and open the template in the editor.
 
             var videoPlayer = document.getElementById("videoPlayer");
             var video = document.getElementById("video");
+            var playButton=document.getElementById("play");
             function playOrPause() {
                 if (audio == null) {
                     if (videoPlayer.style.visibility !== "visible") {
@@ -274,8 +125,10 @@ and open the template in the editor.
                     }
                 } else {
                     if (audio.paused) {
+                        playButton.style.visibility="visible";
                         audio.play();
                     } else {
+                        playButton.style.visibility="hidden";
                         audio.pause();
                     }
                 }
@@ -294,39 +147,53 @@ and open the template in the editor.
             }
 
             function playMusic(arg) {
+                var genre = getGenre();
                 var country = arg.id;
-                var path = "audio/" + year.value + "/" + country + "/";
                 $.ajax({
                     type: "POST",
                     url: "get_music.php",
-                    data: {
-                        year: year.value, 
-                        country: country
-                    },
+                    data: {year: year.value, country: country, genre: genre},
                     success: function (result) {
                         if (result !== false)
                         {
-                            var audio = JSON.parse(result);
-                            var path = "http://localhost/zalrydal/music/audio/" + audio[0];
-                            var audio = new Audio(path);
+                            var track = JSON.parse(result);
+                            var path = "music/audio/" + track[0];
+                            if(audio!=null){
+                                audio.pause();
+                            }
+                            audio=new Audio(path);
+                            playButton.style.visibility="visible";
                             audio.play();
+                            var songName=document.getElementById("songName");
+                            songName.textContent=track[1]+" - "+track[2];
                         } else
                         {
                             alert("Sorry, there was no music in this country this year :(");
                         }
                     }
                 });
+                document.write(track[1] +" - "+ track[2]);
+            }
 
+            function getGenre() {
+                var chosenGenre = null;
+                var genriesId = ["classic", "folk", "rap", "rock", "pop", "jazz"];
+                genriesId.forEach(item => {
+                    if (document.getElementById(item).style.left == "5px") {
+                        chosenGenre = item;
+                    }
+                });
+                return chosenGenre;
+            }
+
+            function changePosition(arg) {
+                var chosenGenre = getGenre();
+                var genriesId = ["classic", "folk", "rap", "rock", "pop", "jazz"];
+                genriesId.forEach(item => document.getElementById(item).style.left = "-23px");
+                genre = arg.closest('div');
+                (chosenGenre == genre.id)?genre.style.left = "-23px":genre.style.left = "5px";
+                buttons();
             }
         </script>
     </body>
 </html>
-<!--var rand = getRandomInt(1, result.length);
-                            if (audio != null) {
-                               // audio.pause();
-                            }
-                            if (!video.paused){
-                              //  video.pause();
-                            }
-                            audio = new Audio();
-                            audio.play();-->

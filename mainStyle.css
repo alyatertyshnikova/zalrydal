@@ -1,0 +1,244 @@
+@font-face {
+                font-family: 'Reckless Sample';
+                font-style: normal;
+                font-weight: normal;
+                src: local('Reckless Sample'), url('reckless_sample.woff') format('woff');
+            }
+            #container{
+                width: 98%;
+                height: 90px;
+                display: inline-block;
+                outline: none;
+                position: fixed;
+                bottom:0%;
+            }
+            #player{
+                position: fixed;
+                top:5px;
+                left:0%;
+            }
+            
+            #vinyl{
+                position: fixed;
+                top:80px;
+                right:7px;
+            }
+
+            #exit{
+                position: fixed;
+                top:10px;
+                right:12px;
+            }
+
+            .slider {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 100%;
+                height: 60px;
+                background: url('images/stave.png');
+                outline: none;
+            }
+
+            datalist{
+                -webkit-appearance: none;
+                appearance: none;
+                color: black;
+                font-size: 15pt;
+                display: flex;
+                font-family:'Reckless Sample';
+                justify-content: space-between; 
+            }
+            .slider::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 30px;
+                height: 90px;
+                background: url('images/clef.png');
+                background-size: 30px 90px;
+            }   
+            .block1{
+                width:1357px;
+                height:628px;
+                margin: auto;
+                position:relative;
+            }
+            #Russia{
+                position:absolute;
+                left:685px;
+                top:85px;
+                outline:none;
+            }
+            #Ukraine{
+                position:absolute;
+                left:670px;
+                top:125px;
+                outline:none;
+            }
+            #Belarus{
+                position:absolute;
+                left:655px;
+                top:105px;
+                outline:none;
+            }
+            #Britain{
+                position:absolute;
+                left:544px;
+                top:108px;
+                outline:none;
+            }
+            #Island{
+                position:absolute;
+                left:500px;
+                top:55px;
+                outline:none;
+            }
+            #France{
+                position:absolute;
+                left:560px;
+                top:140px;
+                outline:none;
+            }
+            #Germany{
+                position:absolute;
+                left:590px;
+                top:120px;
+                outline:none;
+            }
+            #Italy{
+                position:absolute;
+                left:600px;
+                top:150px;
+                outline:none;
+            }
+            #USA{
+                position:absolute;
+                left:150px;
+                top:170px;
+                outline:none;
+            }
+            #Canada{
+                position:absolute;
+                left:185px;
+                top:95px;
+                outline:none;
+            }
+            #Australia{
+                position:absolute;
+                left:1085px;
+                top:465px;
+                outline:none;
+            }
+            #NewZeland{
+                position:absolute;
+                left:1225px;
+                top:520px;
+                outline:none;
+            }
+            #SouthKorea{
+                position:absolute;
+                left:1053px;
+                top:177px;
+                outline:none;
+            }
+            #China{
+                position:absolute;
+                left:950px;
+                top:190px;
+                outline:none;
+            }
+            #Japan{
+                position:absolute;
+                left:1093px;
+                top:175px;
+                outline:none;
+            }
+            #videoPlayer{
+                position: fixed;
+                left:10%;
+                top:10%;
+                visibility: hidden;
+            }
+            #gramophone{
+                outline:none;
+            }
+            #vinyl{
+                outline:none;
+            }
+            #genre text{
+                position: absolute;
+                left:100%;
+                top:28%;
+                font-family:'Reckless Sample';
+                font-size: 20px;
+                display: none;
+            }
+            #genre input{
+                outline: none;
+            }
+            #genre:hover text{
+                display: block;
+            }
+            #classic{
+                left:-23px;
+                top:22%;
+                position: fixed;
+            }
+            #classic:hover{
+                left:5px;
+            }
+            #folk{
+                left:-23px;
+                top:32%;
+                position: fixed;
+            }
+            #folk:hover{
+                left:5px;
+            }
+            #rap{
+                left:-23px;
+                top:42%;
+                position: fixed;
+                outline: none;
+            }
+            #rap:hover{
+                left:5px;
+            }
+            #rock{
+                left:-23px;
+                top:52%;
+                position: fixed;
+            }
+            #rock:hover{
+                left:5px;
+            }
+            #pop{
+                left:-23px;
+                top:62%;
+                position: fixed;
+            }
+            #pop:hover{
+                left:5px;
+            }
+            #jazz{
+                left:-23px;
+                top:72%;
+                position: fixed;
+            }
+            #jazz:hover{
+                left:5px;
+            }
+            #play{
+                position: absolute;
+                left:80%;
+                bottom:38%;
+                outline: none;
+            }
+            #songName{
+                position: absolute;
+                width: 400%;
+                left:0%;
+                top:100%;
+                font-family:'Reckless Sample';
+                font-size: 20px;
+            }
+

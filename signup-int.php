@@ -70,11 +70,19 @@
                 background-color:#008CDC;
                 opacity: 0.5;
             }
+            #errorContent{
+                position: absolute;
+                left: 43%;
+                top:400px;
+                font-family:'Reckless Sample';
+                font-size: 20px;
+            }
         </style>
     </head>
     <body style ="background-image: url(images/octopus.gif)">
         <audio src="audio/all_through_the_night.wav" autoplay loop>
         </audio>
+        <div id='errorContent'>
         <?php
         include ('signup.php');
         if (isset($_SESSION['Error'])) {
@@ -82,6 +90,7 @@
             unset($_SESSION['Error']);
         }
         ?>
+        </div>
         <form action="signup.php" class="center-img" method="post"> 
             <input type="text" placeholder="Enter Username" name="name" required>    
             <input type="password" placeholder="Enter Password" name="psw" required>

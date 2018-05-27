@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <?php
 if (isset($_COOKIE['cookie'])) {
-    $cookie=$_COOKIE['cookie'];
-    $browserInfo= get_browser(NULL, FALSE);
-    $actualCookie= substr($cookie, 0, 8). serialize($browserInfo);
-    if(strcmp($actualCookie, $cookie)==0){
-    header('Location: main.php');
+    $cookie = $_COOKIE['cookie'];
+    $browserInfo = get_browser(NULL, FALSE);
+    $actualCookie = substr($cookie, 0, 8) . serialize($browserInfo);
+    if (strcmp($actualCookie, $cookie) == 0) {
+        header('Location: main.php');
     }
-} 
+}
 ob_start();
 ?>
 <html>
@@ -90,18 +90,17 @@ ob_start();
                 left:300px;
                 top:225px;
             }
+            #errorContent{
+                position: absolute;
+                top:130px;
+                font-family:'Reckless Sample';
+                font-size: 20px;
+            }
         </style>   
     </head>
     <body style="background-color: #008CDC" > 
         <audio src="audio/all_through_the_night.wav" autoplay loop>
         </audio>
-        <?php
-        include ('login.php');
-        if (isset($_SESSION['Error'])) {
-            echo $_SESSION['Error'];
-            unset($_SESSION['Error']);
-        }
-        ?>
         <div class="block1">
             <img src="images/whales.gif" class="center-img">
             <div class="block2">
@@ -113,6 +112,15 @@ ob_start();
                 <button type='button' onclick='location.href = "signup-int.php"' id='signup'>
                     Sign Up
                 </button>
+                <div id='errorContent'>
+                    <?php
+                    include ('login.php');
+                    if (isset($_SESSION['Error'])) {
+                        echo $_SESSION['Error'];
+                        unset($_SESSION['Error']);
+                    }
+                    ?>
+                </div>
             </div>
         </div>
     </body> 

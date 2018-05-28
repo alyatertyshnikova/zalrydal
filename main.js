@@ -94,7 +94,6 @@ function playMusic(arg) {
             }
         }
     });
-    document.write(track[1] + " - " + track[2]);
 }
 
 function getGenre() {

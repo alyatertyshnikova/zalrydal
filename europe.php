@@ -9,8 +9,18 @@
         <script type="text/javascript" src="main.js"></script>
     </head>
 
-    <body style="background-image:url('images/waves.jpg')">
-        <img src='images/europe.png'>
+    <body style="background-image:url('images/waves.jpg')" onload="buttons()">
+        <div id="europe_map">
+            <img src='images/europe.png' class="center-img">
+            <input type="image" id="Ukraine" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="Belarus" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="Britain" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="Island" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="France" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="Germany" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="Italy" name='country' src='images/note.png' onclick='playMusic(this)'>
+            
+        </div>
         <div id="genre">
             <div id="classic">
                 <input type="image" src="images/vinyl.png" onclick="changePosition(this)">
@@ -60,8 +70,11 @@
         <div id='add'>
             <input type="image" id='vinyl' src="images/feather.png" onclick='location.href = "add_music/help_music.php"'>
         </div>
-        <form action="logout.php" method="post"> 
+        <div id="home">
+        <input type="image" style="outline:none;" src="images/earth-music.png" onclick="location.href = 'main.php'">
+        </div>
+        <!--<form action="logout.php" method="post"> 
             <input type="image" style="outline:none;" src="images/coda.png" alt="Submit" id="exit">
-        </form>
+        </form>-->
     </body>
 </html>

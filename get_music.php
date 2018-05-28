@@ -12,9 +12,14 @@ if (isset($_POST['year']) && isset($_POST['country'])) {
     }
     $result = mysqli_query($link, $getQuery);
     $array = mysqli_fetch_all($result);
+    if(count($array)==0){
+       echo json_encode(null); 
+    }
+    else{
     $number=rand(0, count($array)-1);
     $row=$array[$number];
     echo json_encode($row);
+    }
 }
 ?>
 

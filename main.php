@@ -11,6 +11,7 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="mainStyle.css" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript" src="main.js"></script>
     </head>
 
     <body style="background-image:url('images/waves.jpg')"  onload="buttons()">
@@ -32,7 +33,7 @@ and open the template in the editor.
             <input type="image" id="China" name='country' src='images/note.png' onclick='playMusic(this)'>
             <input type="image" id="Japan" name='country' src='images/note.png' onclick='playMusic(this)'>
         </div>
-
+<input type="image" id="button" src='images/note.png' onclick="location.href = 'europe.php'">
         <div id="genre">
             <div id="classic">
                 <input type="image" src="images/vinyl.png" onclick="changePosition(this)">
@@ -84,117 +85,7 @@ and open the template in the editor.
         </div>
         <form action="logout.php" method="post"> 
             <input type="image" style="outline:none;" src="images/coda.png" alt="Submit" id="exit">
-        </form>
-
-
-        <script>
-            var ext = ".mp3";
-            var year = document.getElementById("years");
-            var audio;
-            
-            function check_button(element) {
-                var genre=getGenre();
-                $.ajax({
-                    type: "POST",
-                    url: "get_music.php",
-                    data: {year: year.value, country: element.id, genre:genre},
-                    success: function (result) {
-                        if (JSON.parse(result)==null)
-                        {
-                            element.style.visibility = "hidden";
-                        } else
-                        {
-                            element.style.visibility = "visible";
-                        }
-                    }
-                })
-            }
-
-            var videoPlayer = document.getElementById("videoPlayer");
-            var video = document.getElementById("video");
-            var playButton=document.getElementById("play");
-            function playOrPause() {
-                if (audio == null) {
-                    if (videoPlayer.style.visibility !== "visible") {
-                        videoPlayer.style.visibility = "visible";
-                        video.play();
-                    } else {
-                        video.pause();
-                        video.currentTime = 0;
-                        videoPlayer.style.visibility = "hidden";
-                    }
-                } else {
-                    if (audio.paused) {
-                        playButton.style.visibility="visible";
-                        audio.play();
-                    } else {
-                        playButton.style.visibility="hidden";
-                        audio.pause();
-                    }
-                }
-            }
-
-            function buttons() {
-                var countries = document.getElementsByName("country");
-                var countries_array = Array.prototype.slice.call(countries);
-                countries_array.forEach(check_button);
-                //var max = countries.length;
-                //alert(max);
-
-            }
-            function getRandomInt(min, max) {
-                return Math.floor(Math.random() * (max - min + 1)) + min;
-            }
-
-            function playMusic(arg) {
-                var genre = getGenre();
-                var country = arg.id;
-                $.ajax({
-                    type: "POST",
-                    url: "get_music.php",
-                    data: {year: year.value, country: country, genre: genre},
-                    success: function (result) {
-                        if (result !== false)
-                        {
-                            var track = JSON.parse(result);
-                            var path = "music/audio/" + track[0];
-                            if(audio!=null){
-                                audio.pause();
-                            }
-                            audio=new Audio(path);
-                            playButton.style.visibility="visible";
-                            audio.play();
-                            var songName=document.getElementById("songName");
-                            songName.textContent=track[1]+" - "+track[2];
-                        } else
-                        {
-                            alert("Sorry, there was no music in this country this year :(");
-                        }
-                    }
-                });
-                document.write(track[1] +" - "+ track[2]);
-            }
-
-            function getGenre() {
-                var chosenGenre = null;
-                var genriesId = ["classic", "folk", "rap", "rock", "pop", "jazz"];
-                genriesId.forEach(item => {
-                    if (document.getElementById(item).style.left == "5px") {
-                        chosenGenre = item;
-                    }
-                });
-                return chosenGenre;
-            }
-
-            function changePosition(arg) {
-                var chosenGenre = getGenre();
-                var genriesId = ["classic", "folk", "rap", "rock", "pop", "jazz"];
-                genriesId.forEach(item => document.getElementById(item).style.left = "-23px");
-                genre = arg.closest('div');
-                (chosenGenre == genre.id)?genre.style.left = "-23px":genre.style.left = "5px";
-                buttons();
-            }
-        </script>
+        </form>        
     </body>
 </html>
 <!--var rand = getRandomInt(1, result.length);

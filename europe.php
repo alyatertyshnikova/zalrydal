@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<?php
+if (!isset($_COOKIE['cookie'])) {
+    if (!isset($_SERVER['HTTP_REFERER'])) {
+        header('Location: index.php');
+        exit;
+    }
+}
+?>
 <html>
     <head>
         <title>Music map</title>
@@ -10,7 +18,7 @@
         <link rel="import" href="main.php">
     </head>
 
-    <body style="background-image:url('images/waves.jpg')" onload="buttons()">
+    <body style="background-image:url('images/waves.jpg')" onload="initializeFunction()">
         <img src='images/europe.png'>
     </body>
 

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <?php
 if (!isset($_COOKIE['cookie'])) {
-    if(!isset($_POST['submit'])){
-    header('Location: index.php');
+    if (!isset($_SERVER['HTTP_REFERER'])) {
+        header('Location: index.php');
+        exit;
     }
 }
 ?>
@@ -16,7 +17,7 @@ if (!isset($_COOKIE['cookie'])) {
         <script type="text/javascript" src="main.js"></script>
     </head>
 
-    <body style="background-image:url('images/waves.jpg')"  onload="buttons()">
+    <body style="background-image:url('images/waves.jpg')"  onload="initializeFunction()">
         <div class="block1">
             <img src='images/worldmap.png'>
             <input type="image" id="Russia" name='country' src='images/note.png' onclick='playMusic(this)'>
@@ -35,7 +36,7 @@ if (!isset($_COOKIE['cookie'])) {
             <input type="image" id="China" name='country' src='images/note.png' onclick='playMusic(this)'>
             <input type="image" id="Japan" name='country' src='images/note.png' onclick='playMusic(this)'>
         </div>
-<input type="image" id="button" src='images/note.png' onclick="location.href = 'europe.php'">
+        <input type="image" id="button" src='images/note.png' onclick="location.href = 'europe.php'">
         <div id="genre">
             <div id="classic">
                 <input type="image" src="images/vinyl.png" onclick="changePosition(this)">

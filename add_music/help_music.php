@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <?php
 if (!isset($_COOKIE['cookie'])) {
-    if (!isset($_POST['submit'])) {
+    if (!isset($_SERVER['HTTP_REFERER'])) {
         header('Location: index.php');
+        exit;
     }
 }
 ?>
@@ -52,12 +53,6 @@ if (!isset($_COOKIE['cookie'])) {
                 width: 25%;
                 top: 320px;
             }
-            input[name="genre"]{
-                position: absolute;
-                left: 38%;
-                width: 25%;
-                top: 360px;
-            }
             #upload{
                 font-size: 20px;
                 color:black;
@@ -92,6 +87,17 @@ if (!isset($_COOKIE['cookie'])) {
                 font-family:'Reckless Sample';
                 font-size: 20px;
             }
+            [name="genre"]{
+                color:black;
+                background-color:#008CDC;
+                opacity: 0.5;
+                position: absolute;
+                left: 38%;
+                width: 25%;
+                top: 360px;
+                font-family:'Reckless Sample';
+                font-size: 20px;
+            }
         </style>
     </head>
     <body style ="background-image: url(../images/octopus.gif)">
@@ -112,8 +118,15 @@ if (!isset($_COOKIE['cookie'])) {
             <input type="text" placeholder="Enter Author name" name="author" required>
             <input type="text" placeholder="Enter Counrty" name="country" required>
             <input type="text" placeholder="Enter Year" name="year" required>
-
-            <input type="text" placeholder="Enter Genre" name="genre" required>
+            <select name="genre">
+                <option>classic</option>
+                <option>folk</option>
+                <option>rap</option>
+                <option>rock</option>
+                <option>pop</option>
+                <option>jazz</option>
+            </select>
+            
             <input type="submit" name="sendSong" value="Upload">
             <input type="file" name="fileToUpload" id="fileToUpload" style="display: none;"
                    onchange="document.getElementById('upload_visible').value = this.value;" required>

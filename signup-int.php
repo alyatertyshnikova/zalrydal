@@ -83,7 +83,7 @@
         </style>
     </head>
     <body style ="background-image: url(images/octopus.gif)">
-        <audio src="audio/all_through_the_night.wav" autoplay loop>
+        <audio src="music/audio/all_through_the_night.wav" autoplay loop>
         </audio>
         <div id='errorContent'>
             <?php
@@ -130,9 +130,7 @@
                             var same_pwd_salt = same_psw.concat(salt);
                             var same_out = sjcl.hash.sha256.hash(same_pwd_salt);
                             var same_hash = sjcl.codec.hex.fromBits(same_out);
-                            
-                            alert(hash);
-                            alert(same_hash);
+                           
                             $.ajax({
                                 type: "POST",
                                 url: "signup.php",
@@ -144,7 +142,6 @@
                                     salt: salt
                                 },
                                 success: function (data) {
-                                    alert(data);
                                     if (data == 1)
                                         document.location.replace("main.php");
                                     else

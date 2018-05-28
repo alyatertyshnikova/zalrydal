@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+<?php
+if (!isset($_COOKIE['cookie'])) {
+    if(!isset($_POST['submit'])){
+    header('Location: index.php');
+    }
+}
+?>
 <html>
     <head>
         <title>Music map</title>
@@ -80,10 +82,11 @@ and open the template in the editor.
             <input type="image" id='play' src='images/play.png' style="visibility: hidden;">
             <div id='songName'></div>
         </div>
+
         <div id='add'>
             <input type="image" id='vinyl' src="images/feather.png" onclick='location.href = "add_music/help_music.php"'>
         </div>
-        <form action="logout.php" method="post"> 
+        <form action="logout.php" method="post" id="logout"> 
             <input type="image" style="outline:none;" src="images/coda.png" alt="Submit" id="exit">
         </form>        
     </body>

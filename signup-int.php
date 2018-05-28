@@ -8,6 +8,7 @@
         <title>Music map</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="check_data.js"></script>
         <style>
             ::placeholder{
                 color: black;
@@ -103,7 +104,7 @@
         </button> 
 
         <script>
-
+            var error;
             function signup()
             {
                 var name = document.getElementById("name").value;
@@ -111,6 +112,27 @@
                 var raw_password = document.getElementById("psw").value;
                 var same_psw = document.getElementById("same_psw").value;
 
+                error = checkEmail(email);
+                if(error!=null){
+                    document.getElementById('errorContent').innerHTML=error;
+                    return;
+                } 
+                error = checkPassword(raw_password);
+                if(error!=null){
+                    document.getElementById('errorContent').innerHTML=error;
+                    return;
+                } 
+                if(raw_password!=same_psw){
+                    document.getElementById('errorContent').innerHTML=
+                            "Passwords mismatch";
+                    return;
+                }
+                error = checkName(name);
+                if(error!=null){
+                    document.getElementById('errorContent').innerHTML=error;
+                    return;
+                } 
+                
                 $.ajax({
                     type: "POST",
                     url: "signup.php",
@@ -130,7 +152,7 @@
                             var same_pwd_salt = same_psw.concat(salt);
                             var same_out = sjcl.hash.sha256.hash(same_pwd_salt);
                             var same_hash = sjcl.codec.hex.fromBits(same_out);
-
+                           
                             $.ajax({
                                 type: "POST",
                                 url: "signup.php",

@@ -14,7 +14,12 @@ if (isset($_POST['sendSong'])) {
     $author = $_POST['author'];
     $country = $_POST['country'];
     $year = $_POST['year'];
+    if(isset($_COOKIE['email'])){
     $user = $_COOKIE['email'];
+    }
+    else{
+    $user = "anonymous";   
+    }
     $genre=$_POST['genre'];
     $filename = $_FILES["fileToUpload"]["name"];
     $target_main_dir = "../music/audio/";

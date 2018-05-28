@@ -105,6 +105,7 @@ ob_start();
                 top:225px;
             }
             #errorContent{
+                width:200px;
                 position: absolute;
                 top:130px;
                 font-family:'Reckless Sample';
@@ -138,14 +139,24 @@ ob_start();
                 </div>
             </div> 
         </div> 
-
+        <script type="text/javascript" src="check_data.js"></script>
         <script>
-
+            
             function login()
             {
                 var email = document.getElementById("email").value;
                 var raw_password = document.getElementById("psw").value;
-
+                error = checkEmail(email);
+                if(error!=null){
+                    document.getElementById('errorContent').innerHTML=error;
+                    return;
+                } 
+                
+                error = checkPassword(raw_password);
+                if(error!=null){
+                    document.getElementById('errorContent').innerHTML=error;
+                    return;
+                } 
                 $.ajax({
                     type: "POST",
                     url: "login.php",
@@ -175,7 +186,6 @@ ob_start();
                                         document.location.replace("main.php");
                                     else if (data == -1)
                                         document.location.replace("index.php");
-
                                 }
                             });
                         }

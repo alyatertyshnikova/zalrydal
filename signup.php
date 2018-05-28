@@ -16,6 +16,11 @@ if (isset($_POST['email']) and isset($_POST['name'])) {
             $addQuery = "INSERT INTO users(name, password, email, salt) VALUES('$name', '$hash', '$email', '$salt');";
             $result = mysqli_query($link, $addQuery);
             if ($result) {
+                $email = $_POST['email'];
+                $browserInfo = get_browser(NULL, FALSE);
+                $cookie = random_bytes(8) . serialize($browserInfo);
+                setcookie("cookie", $cookie, time() + (3600 * 24 * 30));
+                setcookie("email", $email, time() + (3600 * 24 * 30));
                 unset($name);
                 unset($email);
                 unset($hash);

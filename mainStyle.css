@@ -23,7 +23,11 @@
                 top:80px;
                 right:7px;
             }
-
+            #home{
+                position: fixed;
+                top:10px;
+                right:7px;
+            }
             #exit{
                 position: fixed;
                 top:10px;
@@ -68,46 +72,52 @@
                 top:85px;
                 outline:none;
             }
+            #Europe{
+                position:absolute;
+                left:600px;
+                top:120px;
+                outline:none;
+            }
             #Ukraine{
                 position:absolute;
-                left:670px;
-                top:125px;
+                left:530px;
+                top:300px;
                 outline:none;
             }
             #Belarus{
                 position:absolute;
-                left:655px;
-                top:105px;
+                left:500px;
+                top:245px;
                 outline:none;
             }
             #Britain{
                 position:absolute;
-                left:544px;
-                top:108px;
+                left:200px;
+                top:240px;
                 outline:none;
             }
             #Island{
                 position:absolute;
-                left:500px;
-                top:55px;
+                left:145px;
+                top:50px;
                 outline:none;
             }
             #France{
                 position:absolute;
-                left:560px;
-                top:140px;
+                left:205px;
+                top:355px;
                 outline:none;
             }
             #Germany{
                 position:absolute;
-                left:590px;
-                top:120px;
+                left:310px;
+                top:285px;
                 outline:none;
             }
             #Italy{
                 position:absolute;
-                left:600px;
-                top:150px;
+                left:320px;
+                top:420px;
                 outline:none;
             }
             #USA{
@@ -240,5 +250,10 @@
                 top:100%;
                 font-family:'Reckless Sample';
                 font-size: 20px;
+            }
+            #europe_map{
+                width:600px;
+                margin: auto;
+                position:relative;
             }
 

@@ -21,13 +21,6 @@ if (!isset($_COOKIE['cookie'])) {
         <div class="block1">
             <img src='images/worldmap.png'>
             <input type="image" id="Russia" name='country' src='images/note.png' onclick='playMusic(this)'>
-            <input type="image" id="Ukraine" name='country' src='images/note.png' onclick='playMusic(this)'>
-            <input type="image" id="Belarus" name='country' src='images/note.png' onclick='playMusic(this)'>
-            <input type="image" id="Britain" name='country' src='images/note.png' onclick='playMusic(this)'>
-            <input type="image" id="Island" name='country' src='images/note.png' onclick='playMusic(this)'>
-            <input type="image" id="France" name='country' src='images/note.png' onclick='playMusic(this)'>
-            <input type="image" id="Germany" name='country' src='images/note.png' onclick='playMusic(this)'>
-            <input type="image" id="Italy" name='country' src='images/note.png' onclick='playMusic(this)'>
             <input type="image" id="USA" name='country' src='images/note.png' onclick='playMusic(this)'>
             <input type="image" id="Canada" name='country' src='images/note.png' onclick='playMusic(this)'>
             <input type="image" id="Australia" name='country' src='images/note.png' onclick='playMusic(this)'>
@@ -35,8 +28,8 @@ if (!isset($_COOKIE['cookie'])) {
             <input type="image" id="SouthKorea" name='country' src='images/note.png' onclick='playMusic(this)'>
             <input type="image" id="China" name='country' src='images/note.png' onclick='playMusic(this)'>
             <input type="image" id="Japan" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="Europe" src='images/note_europe.png' onclick="location.href = 'europe.php'">
         </div>
-        <input type="image" id="button" src='images/note.png' onclick="location.href = 'europe.php'">
         <div id="genre">
             <div id="classic">
                 <input type="image" src="images/vinyl.png" onclick="changePosition(this)">

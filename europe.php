@@ -17,9 +17,21 @@ if (!isset($_COOKIE['cookie'])) {
         <script type="text/javascript" src="main.js"></script>
         <link rel="import" href="main.php">
     </head>
-
     <body style="background-image:url('images/waves.jpg')" onload="initializeFunction()">
-        <img src='images/europe.png'>
+        <div id="europe_map">
+            <img src='images/europe.png' class="center-img">
+            <input type="image" id="Ukraine" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="Belarus" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="Britain" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="Island" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="France" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="Germany" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="Italy" name='country' src='images/note.png' onclick='playMusic(this)'>
+            
+        </div>
+        <div id="home">
+        <input type="image" style="outline:none;" src="images/earth-music.png" onclick="location.href = 'main.php'">
+        </div>
     </body>
 
     <script>

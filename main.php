@@ -91,15 +91,15 @@ and open the template in the editor.
             var ext = ".mp3";
             var year = document.getElementById("years");
             var audio;
-            
+
             function check_button(element) {
-                var genre=getGenre();
+                var genre = getGenre();
                 $.ajax({
                     type: "POST",
                     url: "get_music.php",
-                    data: {year: year.value, country: element.id, genre:genre},
+                    data: {year: year.value, country: element.id, genre: genre},
                     success: function (result) {
-                        if (JSON.parse(result)==null)
+                        if (JSON.parse(result) == null)
                         {
                             element.style.visibility = "hidden";
                         } else
@@ -112,7 +112,7 @@ and open the template in the editor.
 
             var videoPlayer = document.getElementById("videoPlayer");
             var video = document.getElementById("video");
-            var playButton=document.getElementById("play");
+            var playButton = document.getElementById("play");
             function playOrPause() {
                 if (audio == null) {
                     if (videoPlayer.style.visibility !== "visible") {
@@ -125,10 +125,10 @@ and open the template in the editor.
                     }
                 } else {
                     if (audio.paused) {
-                        playButton.style.visibility="visible";
+                        playButton.style.visibility = "visible";
                         audio.play();
                     } else {
-                        playButton.style.visibility="hidden";
+                        playButton.style.visibility = "hidden";
                         audio.pause();
                     }
                 }
@@ -158,21 +158,21 @@ and open the template in the editor.
                         {
                             var track = JSON.parse(result);
                             var path = "music/audio/" + track[0];
-                            if(audio!=null){
+                            if (audio != null) {
                                 audio.pause();
                             }
-                            audio=new Audio(path);
-                            playButton.style.visibility="visible";
+                            audio = new Audio(path);
+                            playButton.style.visibility = "visible";
                             audio.play();
-                            var songName=document.getElementById("songName");
-                            songName.textContent=track[1]+" - "+track[2];
+                            var songName = document.getElementById("songName");
+                            songName.textContent = track[1] + " - " + track[2];
                         } else
                         {
                             alert("Sorry, there was no music in this country this year :(");
                         }
                     }
                 });
-                document.write(track[1] +" - "+ track[2]);
+                document.write(track[1] + " - " + track[2]);
             }
 
             function getGenre() {
@@ -191,7 +191,7 @@ and open the template in the editor.
                 var genriesId = ["classic", "folk", "rap", "rock", "pop", "jazz"];
                 genriesId.forEach(item => document.getElementById(item).style.left = "-23px");
                 genre = arg.closest('div');
-                (chosenGenre == genre.id)?genre.style.left = "-23px":genre.style.left = "5px";
+                (chosenGenre == genre.id) ? genre.style.left = "-23px" : genre.style.left = "5px";
                 buttons();
             }
         </script>

@@ -78,8 +78,13 @@
             <input type="text" placeholder="Enter Author name" name="author" required>
             <input type="text" placeholder="Enter Counrty" name="country" required>
             <input type="text" placeholder="Enter Year" name="year" required>
-                <input type="file" name="fileToUpload" id="fileToUpload" required/>
+            <!--<input type="file" name="fileToUpload" id="fileToUpload" required/>-->
             <input type="submit" name="sendSong" value="Upload">
+            <input type="file" name="fileToUpload" id="fileToUpload" style="display: none;"
+                   onchange="document.getElementById('upload_visible').value = this.value;" required>
+            <input type="text" readonly="1" id="upload_visible" 
+                   onclick="document.getElementById('fileToUpload').click();" />
+            <button id="uploadFile" onclick="document.getElementById('fileToUpload').click();">Find File</button>
         </form>
     </body>
 </html>

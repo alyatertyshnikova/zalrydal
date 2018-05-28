@@ -113,7 +113,7 @@ ob_start();
         </style>   
     </head>
     <body style="background-color: #008CDC" > 
-        <audio src="audio/all_through_the_night.wav" autoplay loop>
+        <audio src="music/audio/all_through_the_night.wav" autoplay loop>
         </audio>
         <div class="block1">
             <img src="images/whales.gif" class="center-img">

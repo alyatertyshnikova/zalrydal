@@ -2,9 +2,6 @@ var ext = ".mp3";
 var audio;
 var countryButton;
 var year;
-audio.onended = function () {
-    playMusic(countryButton)
-};
 
 function check_button(element) {
     var genre = getGenre();
@@ -23,12 +20,13 @@ function check_button(element) {
             }
         }
     })
-    
+
 }
 
 var videoPlayer;
 var video;
 var playButton;
+
 function buttons() {
     videoPlayer = document.getElementById("videoPlayer");
     video = document.getElementById("video");
@@ -37,9 +35,6 @@ function buttons() {
     var countries = document.getElementsByName("country");
     var countries_array = Array.prototype.slice.call(countries);
     countries_array.forEach(check_button);
-    //var max = countries.length;
-    //alert(max);
-
 }
 
 function playOrPause() {
@@ -86,6 +81,9 @@ function playMusic(arg) {
                 audio.src = path;
                 playButton.style.visibility = "visible";
                 audio.play();
+                audio.onended = function () {
+                    playMusic(countryButton)
+                };
                 var songName = document.getElementById("songName");
                 songName.textContent = track[1] + " - " + track[2];
             } else

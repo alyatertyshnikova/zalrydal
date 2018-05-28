@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<?php
+if (!isset($_COOKIE['cookie'])) {
+    if (!isset($_POST['submit'])) {
+        header('Location: index.php');
+    }
+}
+?>
 <html>
     <head>
         <title>Music Map</title>

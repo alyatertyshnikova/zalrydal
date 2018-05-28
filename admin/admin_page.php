@@ -4,7 +4,6 @@
         <title>Music Map</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style></style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     </head>
     <body style ="background-image: url(../images/pulp_fiction.gif)" onload="getMessages()">
@@ -16,7 +15,8 @@
         <script>
             var audio;
             function listen(){
-                if(document.getElementById("listen").value=="Pause"){
+                if(document.getElementById("listen").value=="Stop"){
+                    audio.controls=false;
                     audio.pause();
                     document.getElementById("listen").value="Play";
                 }
@@ -30,8 +30,10 @@
                     data: {data:result},
                     success: function(path){
                         audio=new Audio(path);
+                        audio.controls=true;
+                        document.body.appendChild(audio);
                         audio.play();
-                        document.getElementById("listen").value="Pause";
+                        document.getElementById("listen").value="Stop";
                     }
                 });
             }

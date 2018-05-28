@@ -88,30 +88,7 @@ if (!isset($_COOKIE['cookie'])) {
         </div>
         <form action="logout.php" method="post" id="logout"> 
             <input type="image" style="outline:none;" src="images/coda.png" alt="Submit" id="exit">
+
         </form>        
     </body>
 </html>
-<!--var rand = getRandomInt(1, result.length);
-                            if (audio != null) {
-                               // audio.pause();
-                            }
-                            if (!video.paused){
-                              //  video.pause();
-                            }
-                            audio = new Audio();
-                            audio.play();-->
-<!--function check_button(element) {
-                var path = "audio/" + year.value + "/" + element.id + "/";
-                $.ajax({
-                    type: "POST",
-                    url: "count_files.php",
-                    data: {path: path},
-                    success: function (count) {
-                        if (count == 0) {
-                            element.style.visibility = "hidden";
-                        } else {
-                            element.style.visibility = "visible";
-                        }
-                    }
-                })
-            }-->

@@ -112,6 +112,7 @@ if (!isset($_COOKIE['cookie'])) {
             <input type="text" placeholder="Enter Author name" name="author" required>
             <input type="text" placeholder="Enter Counrty" name="country" required>
             <input type="text" placeholder="Enter Year" name="year" required>
+
             <input type="text" placeholder="Enter Genre" name="genre" required>
             <input type="submit" name="sendSong" value="Upload">
             <input type="file" name="fileToUpload" id="fileToUpload" style="display: none;"

@@ -4,58 +4,64 @@ include ('config.php');
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+if (isset($_POST['email']) and isset($_POST['name'])) {
+    if (isset($_POST['hash']) and isset($_POST['same_hash']) and isset($_POST['salt'])) {
+        $email = ($_POST['email']);
+        $name = ($_POST['name']);
+        $hash = ($_POST['hash']);
+        $same_hash = ($_POST['same_hash']);
+        $salt = ($_POST['salt']);
 
-if (isset($_POST['registration'])) {
-    global $error, $nameError;
-    $name = ($_POST['name']);
-    $password = ($_POST['psw']);
-    $confirmPassword = ($_POST['samepassword']);
-    $email = ($_POST['email']);
-    $error = false;
-    if (empty($name) || strlen($name) > 30) {
-        $error = true;
-        $nameError = "Name should have from 0 to 30 length";
-    } else if (!preg_match('/\w+/', $name)) {
-        $error = true;
-        $nameError = "Name should contain only digits, characters or underscore";
-    }
-    if (empty($password)) {
-        $error = true;
-        $nameError = "Password should have from 0 to 30 length";
-    } else if (!preg_match("/\w+/", $password)) {
-        $error = true;
-        $nameError = "Password should contain only digits, characters or underscore";
-    }
-    if ($password != $confirmPassword) {
-        $error = true;
-        $nameError = "Passwords are not the same";
-    }
-    if (empty($email) || !filter_var(FILTER_VALIDATE_EMAIL)) {
-        $error = true;
-        $nameError = "Email should be validate";
+        if ($hash == $same_hash) {
+            $addQuery = "INSERT INTO users(name, password, email, salt) VALUES('$name', '$hash', '$email', '$salt');";
+            $result = mysqli_query($link, $addQuery);
+            if ($result) {
+                unset($name);
+                unset($email);
+                unset($hash);
+                unset($same_hash);
+                unset($res);
+                echo 1;
+            } else {
+                $_SESSION['Error'] = "Something went wrong.";
+                echo -1;
+            }
+        } else {
+            $_SESSION['Error'] = "Password mismatch.";
+            echo -1;
+        }
     } else {
-        $emailQuery = "SELECT email FROM users WHERE email='$email'";
-        $result = mysqli_query($link, $emailQuery);
-        if (mysqli_num_rows($result) != 0) {
+        //get salt
+        global $error, $nameError;
+        $error = false;
+        $email = ($_POST['email']);
+        $name = ($_POST['name']);
+
+        if (empty($name) || strlen($name) > 30) {
             $error = true;
-            $_SESSION['Error'] = "This email is already in use.";
-            header('Location: signup-int.php');
+            $nameError = "Name should have from 0 to 30 length";
+        } else if (!preg_match('/\w+/', $name)) {
+            $error = true;
+            $nameError = "Name should contain only digits, characters or underscore";
+        } else if (empty($email) || !filter_var(FILTER_VALIDATE_EMAIL)) {
+            $error = true;
+            $nameError = "Email should be valid";
+        } else {
+            $emailQuery = "SELECT email FROM users WHERE email='$email'";
+            $result = mysqli_query($link, $emailQuery);
+            if (mysqli_num_rows($result) != 0) {
+                $error = true;
+                $nameError = "This email is already in use.";
+            }
         }
-    }
-    if (!$error) {
-        $options=[cost=>12];
-        $hash= password_hash($password, PASSWORD_BCRYPT);
-        $addQuery = "INSERT INTO users(name, password, email) VALUES('$name', '$hash', '$email');";
-        $result = mysqli_query($link, $addQuery);
-        if ($result) {
-            unset($name);
-            unset($email);
-            unset($pass);
-            header('Location: main.php');
+        if (!$error) {
+            $salt = random_bytes(4);
+            $res = bin2hex($salt);
+            echo json_encode($res);
+        } else {
+            $_SESSION['Error'] = $nameError;
+            echo -1;
         }
-    } else {
-        header('Location: signup-int.php');
-        echo $nameError;
     }
 }
 ?>

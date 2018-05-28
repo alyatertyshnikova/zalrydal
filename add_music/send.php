@@ -21,6 +21,7 @@ if (isset($_POST['sendSong'])) {
     $target_main_file = $target_main_dir . $author . " - " . $song .".mp3";
     $target_dir = "../music/new_songs/";
     $target_file = $target_dir . $author . " - " . $song .".mp3";
+
     $newFileName=$author . " - " . $song .".mp3";
     $mp3_mimes = array('audio/mpeg', 'audio/x-mpeg', 'audio/mpeg3', 'audio/x-mpeg-3');
     $uploadOk = 1;

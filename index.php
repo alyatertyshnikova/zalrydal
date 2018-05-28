@@ -13,6 +13,7 @@ ob_start();
 <html>
     <head>
         <script src="sjcl.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
         <title>Music map</title>
         <meta charset="UTF-8">
@@ -79,7 +80,7 @@ ob_start();
                 background-color:#008CDC;
                 opacity: 0.5;
             }
-            #login{
+            #login_button{
                 position: absolute;
                 left:0px;
                 top:100px;
@@ -116,15 +117,16 @@ ob_start();
         </audio>
         <div class="block1">
             <img src="images/whales.gif" class="center-img">
-            <div class="block2">
-                <form action="login.php" class="center-img" method="POST"> 
-                    <input type="text" placeholder="Enter Email" name="email" required> 
-                    <input type="password" placeholder="Enter Password" name="psw" required> 
-                    <input type="submit" name="submit" value="Log in">
-                </form> 
-                <button type='button' onclick='location.href = "signup-int.php"' id='signup'>
-                    Sign Up
-                </button>
+
+            <div class="block2"> 
+                <input type="text" placeholder="Enter Email" id="email" name="email" required> 
+                <input type="password" placeholder="Enter Password" name="psw" id="psw" required> 
+                <button type="button" onclick="login();" id="login_button"> 
+                    Log In 
+                </button> 
+                <button type='button' onclick='location.href = "signup-int.php"' id='signup'> 
+                    Sign Up 
+                </button> 
                 <div id='errorContent'>
                     <?php
                     include ('login.php');
@@ -134,7 +136,53 @@ ob_start();
                     }
                     ?>
                 </div>
-            </div>
-        </div>
+            </div> 
+        </div> 
+
+        <script>
+
+            function login()
+            {
+                var email = document.getElementById("email").value;
+                var raw_password = document.getElementById("psw").value;
+
+                $.ajax({
+                    type: "POST",
+                    url: "login.php",
+                    data: {
+                        email: email
+                    },
+                    success: function (salt) {
+                        if (salt == -1)
+                            document.location.replace("index.php");
+                        else {
+                            var pwd_salt = raw_password.concat(JSON.parse(salt));
+                            var out = sjcl.hash.sha256.hash(pwd_salt);
+                            var hash = sjcl.codec.hex.fromBits(out);
+                            //alert(hash);
+
+                            $.ajax({
+                                type: "POST",
+                                url: "login.php",
+                                data: {
+                                    email: email,
+                                    hash: hash
+                                },
+                                success: function (data) {
+                                    if (data == 0)
+                                        document.location.replace("admin/admin_page.php");
+                                    else if (data == 1)
+                                        document.location.replace("main.php");
+                                    else if (data == -1)
+                                        document.location.replace("index.php");
+
+                                }
+                            });
+                        }
+                    }
+                });
+            }
+        </script>
+
     </body> 
 </html>

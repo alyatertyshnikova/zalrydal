@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <title>Music map</title>
@@ -14,26 +9,8 @@ and open the template in the editor.
         <script type="text/javascript" src="main.js"></script>
     </head>
 
-    <body style="background-image:url('images/waves.jpg')"  onload="buttons()">
-        <div class="block1">
-            <img src='images/worldmap.png'>
-            <input type="image" id="Russia" name='country' src='images/note.png' onclick='playMusic(this)'>
-            <input type="image" id="Ukraine" name='country' src='images/note.png' onclick='playMusic(this)'>
-            <input type="image" id="Belarus" name='country' src='images/note.png' onclick='playMusic(this)'>
-            <input type="image" id="Britain" name='country' src='images/note.png' onclick='playMusic(this)'>
-            <input type="image" id="Island" name='country' src='images/note.png' onclick='playMusic(this)'>
-            <input type="image" id="France" name='country' src='images/note.png' onclick='playMusic(this)'>
-            <input type="image" id="Germany" name='country' src='images/note.png' onclick='playMusic(this)'>
-            <input type="image" id="Italy" name='country' src='images/note.png' onclick='playMusic(this)'>
-            <input type="image" id="USA" name='country' src='images/note.png' onclick='playMusic(this)'>
-            <input type="image" id="Canada" name='country' src='images/note.png' onclick='playMusic(this)'>
-            <input type="image" id="Australia" name='country' src='images/note.png' onclick='playMusic(this)'>
-            <input type="image" id="NewZeland" name='country' src='images/note.png' onclick='playMusic(this)'>
-            <input type="image" id="SouthKorea" name='country' src='images/note.png' onclick='playMusic(this)'>
-            <input type="image" id="China" name='country' src='images/note.png' onclick='playMusic(this)'>
-            <input type="image" id="Japan" name='country' src='images/note.png' onclick='playMusic(this)'>
-        </div>
-<input type="image" id="button" src='images/note.png' onclick="location.href = 'europe.php'">
+    <body style="background-image:url('images/waves.jpg')">
+        <img src='images/europe.png'>
         <div id="genre">
             <div id="classic">
                 <input type="image" src="images/vinyl.png" onclick="changePosition(this)">
@@ -85,7 +62,6 @@ and open the template in the editor.
         </div>
         <form action="logout.php" method="post"> 
             <input type="image" style="outline:none;" src="images/coda.png" alt="Submit" id="exit">
-
-        </form>        
+        </form>
     </body>
 </html>

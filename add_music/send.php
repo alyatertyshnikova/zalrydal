@@ -15,10 +15,14 @@ if (isset($_POST['sendSong'])) {
     $country = $_POST['country'];
     $year = $_POST['year'];
     $user = $_COOKIE['email'];
+    $genre=$_POST['genre'];
     $filename = $_FILES["fileToUpload"]["name"];
+    $target_main_dir = "../music/audio/";
+    $target_main_file = $target_main_dir . $author . " - " . $song .".mp3";
     $target_dir = "../music/new_songs/";
     $target_file = $target_dir . $author . " - " . $song .".mp3";
-    
+
+    $newFileName=$author . " - " . $song .".mp3";
     $mp3_mimes = array('audio/mpeg', 'audio/x-mpeg', 'audio/mpeg3', 'audio/x-mpeg-3');
     $uploadOk = 1;
     // Allow certain file formats
@@ -26,9 +30,12 @@ if (isset($_POST['sendSong'])) {
          $_SESSION['Error'] =  "File type should be MP3.";
         $uploadOk = 0;
     }
-   
     // Check if file already exists
     if (file_exists($target_file)) {
+        $_SESSION['Error'] =   "Sorry, file already exists.";
+        $uploadOk = 0;
+    }
+    if (file_exists($target_main_file)) {
         $_SESSION['Error'] =   "Sorry, file already exists.";
         $uploadOk = 0;
     }
@@ -41,7 +48,7 @@ if (isset($_POST['sendSong'])) {
         header('Location: help_music.php');
     } else {
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-            $send = "INSERT INTO new_songs(song, author, country, year, user, link) VALUES('$song', '$author', '$country', '$year', '$user', '$filename');";
+            $send = "INSERT INTO new_songs(song, author, country, year, user, link, genre) VALUES('$song', '$author', '$country', '$year', '$user', '$newFileName', '$genre');";
             $result = mysqli_query($link, $send);
             
             $_SESSION['Error'] = "The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded.";
@@ -52,4 +59,5 @@ if (isset($_POST['sendSong'])) {
         }
     }
 }
+
 ?>

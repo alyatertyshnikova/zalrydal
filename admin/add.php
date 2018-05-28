@@ -1,22 +1,19 @@
 <?php
 include ('../config_music.php');
-if (isset($_POST['id'])) {
-    $id = $_POST['id'];
-    $getSong = "SELECT song, author, country, year, link FROM new_songs WHERE id='$id'";
+if (isset($_POST['data'])) {
+    $data = $_POST['data'];
+    $getSong = "SELECT link FROM new_songs WHERE year='$data[0]' AND country='$data[1]'"
+            . "AND song='$data[2]' AND author='$data[3]' AND genre='$data[4]'";
     $result = mysqli_query($link, $getSong);
-    
     $filename = mysqli_fetch_assoc($result)['link'];
     $path = "../music/new_songs/" . $filename;
     $newpath = "../music/audio/" . $filename;
     copy($path, $newpath);
     unlink($path);
-    
-    $genre="regular";
-    $result = mysqli_query($link, $getSong);
-    $info= mysqli_fetch_row($result);
-    $addSong="INSERT INTO songs(year, country, link, author, song, genre) VALUES('$info[3]', '$info[2]', '$info[4]', '$info[1]', '$info[0]', '$genre');";
+   // $result = mysqli_query($link, $getSong);
+   // $info= mysqli_fetch_row($result);
+    $addSong="INSERT INTO audio(year, country, link, author, song, genre) VALUES('$data[0]', '$data[1]', '$filename', '$data[3]', '$data[2]', '$data[4]');";
     $result = mysqli_query($link, $addSong);
-    
     /*$genre="regular";
     $year= mysqli_fetch_assoc($result)['year'];
     $country= mysqli_fetch_assoc($result)['country'];

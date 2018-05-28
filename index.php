@@ -119,7 +119,7 @@ ob_start();
             <img src="images/whales.gif" class="center-img">
 
             <div class="block2"> 
-                <input type="text" placeholder="Enter Email" id="email" name="email" required> 
+                <input type="email" placeholder="Enter Email" id="email" name="email" required> 
                 <input type="password" placeholder="Enter Password" name="psw" id="psw" required> 
                 <button type="button" onclick="login();" id="login_button"> 
                     Log In 

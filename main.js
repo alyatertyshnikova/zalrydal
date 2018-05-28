@@ -27,15 +27,21 @@ var videoPlayer;
 var video;
 var playButton;
 
+
 function buttons() {
-    videoPlayer = document.getElementById("videoPlayer");
-    video = document.getElementById("video");
-    playButton = document.getElementById("play");
-    audio = new Audio();
     var countries = document.getElementsByName("country");
     var countries_array = Array.prototype.slice.call(countries);
     countries_array.forEach(check_button);
 }
+
+function initializeFunction() {
+    videoPlayer = document.getElementById("videoPlayer");
+    video = document.getElementById("video");
+    playButton = document.getElementById("play");
+    audio = new Audio();
+    buttons();
+}
+
 
 function playOrPause() {
     if (audio.src == "") {

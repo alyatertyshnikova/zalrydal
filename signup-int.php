@@ -83,7 +83,7 @@
         </style>
     </head>
     <body style ="background-image: url(images/octopus.gif)">
-        <audio src="audio/all_through_the_night.wav" autoplay loop>
+        <audio src="music/audio/all_through_the_night.wav" autoplay loop>
         </audio>
         <div id='errorContent'>
             <?php

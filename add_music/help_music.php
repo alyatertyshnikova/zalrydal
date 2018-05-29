@@ -82,8 +82,8 @@ if (!isset($_COOKIE['cookie'])) {
             }
             #errorContent{
                 position: absolute;
-                top:160px;
-                left:43%;
+                top:480px;
+                left: 38%;
                 font-family:'Reckless Sample';
                 font-size: 20px;
             }
@@ -124,21 +124,24 @@ if (!isset($_COOKIE['cookie'])) {
             }
             ?>
         </div>
-    <center>
-        <text id="text">
-        Hello! 
-        <p>Thank you for helping us creating the best music database that covers all the Earth and time. 
-        <p>Please, write the name of the missing song using latin letters, try to use correct data and note genre that we have on a main page.
-        <p>Hope you like it! See you on the dark side of the Moon!
-            </text>
-    </center>
-    <input type="image" id="home" src="../images/earth-music.png" onclick="location.href = '../main.php'">
-    <form action="send.php" class="center-img" enctype="multipart/form-data" method="post"> 
-        <input type="text" placeholder="Enter Song name" name="song" required>    
-        <input type="text" placeholder="Enter Author name" name="author" required>
-        <input type="text" placeholder="Enter Counrty" name="country" required>
-        <input type="text" placeholder="Enter Year" name="year" required>
-        <select name="genre">
+        <div >
+            <center>
+                <text id="text">
+                Hello! 
+                <br>Thank you for helping us creating the best music database that covers all the Earth and time. 
+                <br>Please, write the name of the missing song using latin letters and specify a correct date.
+                <br>Hope you like it! See you on the dark side of the Moon!
+                </text>
+            </center>
+        </div>
+
+        <input type="image" id="home" src="../images/earth-music.png" onclick="location.href = '../main.php'">
+        <form action="send.php" class="center-img" enctype="multipart/form-data" method="post"> 
+            <input type="text" placeholder="Enter Song name" name="song" required>    
+            <input type="text" placeholder="Enter Author name" name="author" required>
+            <input type="text" placeholder="Enter Counrty" name="country" required>
+            <input type="text" placeholder="Enter Year" name="year" required>
+            <select name="genre">
                 <option>classic</option>
                 <option>folk</option>
                 <option>rap</option>
@@ -146,13 +149,13 @@ if (!isset($_COOKIE['cookie'])) {
                 <option>pop</option>
                 <option>jazz</option>
             </select>
-        <input type="submit" name="sendSong" value="Upload">
-        <input type="file" name="fileToUpload" id="fileToUpload" style="display: none;"
-               onchange="document.getElementById('upload_visible').value = this.value;" required>
-        <input type="text" readonly="1" id="upload_visible" 
-               onclick="document.getElementById('fileToUpload').click();" />
-        <button id="upload" onclick="document.getElementById('fileToUpload').click();">Find File</button>
-    </form>
+            <input type="submit" name="sendSong" value="Upload">
+            <input type="file" name="fileToUpload" id="fileToUpload" style="display: none;"
+                   onchange="document.getElementById('upload_visible').value = this.value;" required>
+            <input type="text" readonly="1" id="upload_visible" 
+                   onclick="document.getElementById('fileToUpload').click();" />
+            <button id="upload" onclick="document.getElementById('fileToUpload').click();">Find File</button>
+        </form>
 
-</body>
+    </body>
 </html>

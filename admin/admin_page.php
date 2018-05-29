@@ -67,7 +67,6 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
                     url: "add.php",
                     data: {data: result},
                     success: function () {
-                        deleteMessage();
                         selector.remove(index);
                     }
                 });

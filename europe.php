@@ -27,7 +27,7 @@ if (!isset($_COOKIE['cookie'])) {
             <input type="image" id="France" name='country' src='images/note.png' onclick='playMusic(this)'>
             <input type="image" id="Germany" name='country' src='images/note.png' onclick='playMusic(this)'>
             <input type="image" id="Italy" name='country' src='images/note.png' onclick='playMusic(this)'>
-            
+            <input type="image" id="Moldova" name='country' src='images/note.png' onclick='playMusic(this)'>
         </div>
         <div id="home">
         <input type="image" style="outline:none;" src="images/earth-music.png" onclick="location.href = 'main.php'">

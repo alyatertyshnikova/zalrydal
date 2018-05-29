@@ -16,7 +16,12 @@ if (isset($_POST['sendSong'])) {
     $author = mysqli_real_escape_string($link, $_POST['author']);
     $country = mysqli_real_escape_string($link, $_POST['country']);
     $year = mysqli_real_escape_string($link, $_POST['year']);
-    $user = $_COOKIE['email'];
+    if(isset($_COOKIE['email'])){
+        $user = $_COOKIE['email'];
+        }
+        else{
+        $user = "anonymous";   
+        }
     $genre = mysqli_real_escape_string($link, $_POST['genre']);
     $fileName = $author . " - " . $song .".mp3";
     

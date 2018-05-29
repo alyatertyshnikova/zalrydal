@@ -98,7 +98,6 @@ if (!isset($_COOKIE['cookie'])) {
                 font-family:'Reckless Sample';
                 font-size: 20px;
             }
-
             #text{
                 top:0px;
                 font-size: 20px;

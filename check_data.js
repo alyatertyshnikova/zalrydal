@@ -34,12 +34,12 @@ function checkName(name) {
     if (name == "") {
         error = "Fill name field";
     }
-    if (name.length > 50) {
+    if (name.length > 30) {
         error = "Your name too long";
     }
-    var found=raw_password.match(re); 
+    var found=name.match(re); 
     if(found.length!=1){
-        error = "Password can contain only digits, letters and _%+!- symbols";
+        error = "Name can contain only digits, letters and _%+!- symbols";
     }
     return error;
 }

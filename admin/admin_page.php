@@ -18,6 +18,9 @@ if (!isset($_SERVER['HTTP_REFERER'])) {
         <input type="submit" name="delete" value="Delete" onclick="deleteMessage()">
         <input type="submit" name="apply" value="Apply" onclick="addMessage()">
         <input type="submit" id="listen" value="Play" onclick="listen()">
+        <button type='button' onclick='location.href = "../index.php"'> 
+            Log Out
+        </button> 
         <script>
             var audio;
             function listen() {

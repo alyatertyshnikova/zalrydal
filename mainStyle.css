@@ -96,6 +96,18 @@
                 top:330px;
                 outline:none;
             }
+            #Norway{
+                position:absolute;
+                left:315px;
+                top:140px;
+                outline:none;
+            }
+            #Ireland{
+                position:absolute;
+                left:130px;
+                top:240px;
+                outline:none;
+            }
             #Britain{
                 position:absolute;
                 left:200px;

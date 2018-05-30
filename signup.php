@@ -13,7 +13,8 @@ if (isset($_POST['email']) and isset($_POST['name'])) {
         $salt = ($_POST['salt']);
 
         if ($hash == $same_hash) {
-            $addQuery = "INSERT INTO users(name, password, email, salt) VALUES('$name', '$hash', '$email', '$salt');";
+            $hashash = password_hash($hash, PASSWORD_BCRYPT);
+            $addQuery = "INSERT INTO users(name, password, email, salt) VALUES('$name', '$hashash', '$email', '$salt');";
             $result = mysqli_query($link, $addQuery);
             if ($result) {
                 $email = $_POST['email'];

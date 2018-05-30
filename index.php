@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <?php
+include ('config.php');
 if (isset($_COOKIE['cookie'])) {
     $cookie = $_COOKIE['cookie'];
     $browserInfo = get_browser(NULL, FALSE);
-    $actualCookie = substr($cookie, 0, 8) . serialize($browserInfo);
-    if (strcmp($actualCookie, $cookie) == 0) {
-        header('Location: main.php');
+    $random = substr($cookie, 0, 32);
+    $query = mysqli_query($link, "SELECT email FROM users WHERE cookie='$random' LIMIT 1");
+
+    if ($query != NULL) {
+        $actualCookie = $random . serialize($browserInfo);
+        if (strcmp($actualCookie, $cookie) == 0) {
+            
+            echo "zses";
+            $result = mysqli_fetch_all($query);
+            $email = $result[0];
+            setcookie("email", $email, time() + (3600 * 24 * 30));
+            header('Location: main.php');
+        }
     }
 }
 ob_start();
@@ -129,69 +140,69 @@ ob_start();
                     Sign Up 
                 </button> 
                 <div id='errorContent'>
-                    <?php
-                    include ('login.php');
-                    if (isset($_SESSION['Error'])) {
-                        echo $_SESSION['Error'];
-                        unset($_SESSION['Error']);
-                    }
-                    ?>
+<?php
+include ('login.php');
+if (isset($_SESSION['Error'])) {
+    echo $_SESSION['Error'];
+    unset($_SESSION['Error']);
+}
+?>
                 </div>
             </div> 
         </div> 
         <script type="text/javascript" src="check_data.js"></script>
         <script>
-            
-            function login()
-            {
-                var email = document.getElementById("email").value;
-                var raw_password = document.getElementById("psw").value;
-                error = checkEmail(email);
-                if(error!=null){
-                    document.getElementById('errorContent').innerHTML=error;
-                    return;
-                } 
-                
-                error = checkPassword(raw_password);
-                if(error!=null){
-                    document.getElementById('errorContent').innerHTML=error;
-                    return;
-                } 
-                $.ajax({
-                    type: "POST",
-                    url: "login.php",
-                    data: {
-                        email: email
-                    },
-                    success: function (salt) {
-                        if (salt == -1)
-                            document.location.replace("index.php");
-                        else {
-                            var pwd_salt = raw_password.concat(JSON.parse(salt));
-                            var out = sjcl.hash.sha256.hash(pwd_salt);
-                            var hash = sjcl.codec.hex.fromBits(out);
-                            //alert(hash);
 
-                            $.ajax({
-                                type: "POST",
-                                url: "login.php",
-                                data: {
-                                    email: email,
-                                    hash: hash
-                                },
-                                success: function (data) {
-                                    if (data == 0)
-                                        document.location.replace("admin/admin_page.php");
-                                    else if (data == 1)
-                                        document.location.replace("main.php");
-                                    else if (data == -1)
-                                        document.location.replace("index.php");
-                                }
-                            });
+                    function login()
+                    {
+                        var email = document.getElementById("email").value;
+                        var raw_password = document.getElementById("psw").value;
+                        error = checkEmail(email);
+                        if (error != null) {
+                            document.getElementById('errorContent').innerHTML = error;
+                            return;
                         }
+
+                        error = checkPassword(raw_password);
+                        if (error != null) {
+                            document.getElementById('errorContent').innerHTML = error;
+                            return;
+                        }
+                        $.ajax({
+                            type: "POST",
+                            url: "login.php",
+                            data: {
+                                email: email
+                            },
+                            success: function (salt) {
+                                if (salt == -1)
+                                    document.location.replace("index.php");
+                                else {
+                                    var pwd_salt = raw_password.concat(JSON.parse(salt));
+                                    var out = sjcl.hash.sha256.hash(pwd_salt);
+                                    var hash = sjcl.codec.hex.fromBits(out);
+                                    //alert(hash);
+
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "login.php",
+                                        data: {
+                                            email: email,
+                                            hash: hash
+                                        },
+                                        success: function (data) {
+                                            if (data == 0)
+                                                document.location.replace("admin/admin_page.php");
+                                            else if (data == 1)
+                                                document.location.replace("main.php");
+                                            else if (data == -1)
+                                                document.location.replace("index.php");
+                                        }
+                                    });
+                                }
+                            }
+                        });
                     }
-                });
-            }
         </script>
 
     </body> 

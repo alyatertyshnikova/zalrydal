@@ -28,7 +28,10 @@ if (!isset($_COOKIE['cookie'])) {
             <input type="image" id="SouthKorea" name='country' src='images/note.png' onclick='playMusic(this)'>
             <input type="image" id="China" name='country' src='images/note.png' onclick='playMusic(this)'>
             <input type="image" id="Japan" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="Argentina" name='country' src='images/note.png' onclick='playMusic(this)'>
+            <input type="image" id="Morocco" name='country' src='images/note.png' onclick='playMusic(this)'>
             <input type="image" id="Europe" src='images/note_europe.png' onclick="location.href = 'europe.php'">
+           
         </div>
         <div id="genre">
             <div id="classic">
@@ -58,9 +61,15 @@ if (!isset($_COOKIE['cookie'])) {
         </div>
 
         <div class="slidercontainer" id="container">
-            <input type="range" min="1990" max="2010" step="10" class="slider" id="years" list="ticks"
+            <input type="range" min="1930" max="2010" step="10" class="slider" id="years" list="ticks"
                    onchange="buttons()">
             <datalist id="ticks">
+                <option>1930</option>
+                <option>1940</option>
+                <option>1950</option>
+                <option>1960</option>
+                <option>1970</option>
+                <option>1980</option>
                 <option>1990</option>
                 <option>2000</option>
                 <option>2010</option>

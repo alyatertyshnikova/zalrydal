@@ -108,6 +108,18 @@
                 top:240px;
                 outline:none;
             }
+            #Argentina{
+                position:absolute;
+                left:290px;
+                top:495px;
+                outline:none;
+            }
+            #Morocco{
+                position:absolute;
+                left:525px;
+                top:200px;
+                outline:none;
+            }
             #Britain{
                 position:absolute;
                 left:200px;
@@ -264,8 +276,8 @@
             #songName{
                 position: absolute;
                 width: 400%;
-                left:0%;
-                top:100%;
+                left:120%;
+                top:0%;
                 font-family:'Reckless Sample';
                 font-size: 20px;
             }

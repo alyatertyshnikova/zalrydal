@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <?php
 include ('config.php');
-if (isset($_COOKIE['cookie'])) {
+if (isset($_COOKIE['cookie']) and isset($_COOKIE['email'])) {
     $cookie = $_COOKIE['cookie'];
-    $browserInfo = get_browser(NULL, FALSE);
     $random = substr($cookie, 0, 32);
-    $query = mysqli_query($link, "SELECT email FROM users WHERE cookie='$random' LIMIT 1");
-
+    $random_hashed = hash("sha256", $random);
+    $query = mysqli_query($link, "SELECT email FROM users WHERE cookie='$random_hashed' LIMIT 1");
+    
     if ($query != NULL) {
-        $actualCookie = $random . serialize($browserInfo);
-        if (strcmp($actualCookie, $cookie) == 0) {
+        $result = mysqli_fetch_all($query);
+        $email_from_bd = $result[0];
+        $email_from_cookie = $_COOKIE['email'];
+        
+        if (strcmp($email_from_bd,$email_from_cookie)==0) {
+            $browserInfo = get_browser(NULL, FALSE);
+            $actualCookie = $random . serialize($browserInfo);
             
-            echo "zses";
-            $result = mysqli_fetch_all($query);
-            $email = $result[0];
-            setcookie("email", $email, time() + (3600 * 24 * 30));
-            header('Location: main.php');
+            if (strcmp($actualCookie, $cookie) == 0) {
+                header('Location: main.php');
+            }
         }
     }
 }
@@ -140,13 +143,13 @@ ob_start();
                     Sign Up 
                 </button> 
                 <div id='errorContent'>
-<?php
-include ('login.php');
-if (isset($_SESSION['Error'])) {
-    echo $_SESSION['Error'];
-    unset($_SESSION['Error']);
-}
-?>
+                    <?php
+                    include ('login.php');
+                    if (isset($_SESSION['Error'])) {
+                        echo $_SESSION['Error'];
+                        unset($_SESSION['Error']);
+                    }
+                    ?>
                 </div>
             </div> 
         </div> 
@@ -194,7 +197,7 @@ if (isset($_SESSION['Error'])) {
                                             if (data == 0)
                                                 document.location.replace("admin/admin_page.php");
                                             else if (data == 1)
-                                                document.location.replace("main.php");
+                                            document.location.replace("main.php");
                                             else if (data == -1)
                                                 document.location.replace("index.php");
                                         }

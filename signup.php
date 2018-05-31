@@ -19,9 +19,25 @@ if (isset($_POST['email']) and isset($_POST['name'])) {
             if ($result) {
                 $email = $_POST['email'];
                 $browserInfo = get_browser(NULL, FALSE);
-                $cookie = random_bytes(8) . serialize($browserInfo);
+                $random = random_bytes(32);
+
+                $random_in_use = 1;
+                while ($random_in_use == 1) {
+                    $random_hashed = hash("sha256", $random);
+                    $randomQuery = "SELECT * FROM users WHERE cookie='$random_hashed'";
+                    $result = mysqli_query($link, $randomQuery);
+                    if (mysqli_num_rows($result) == 0) {
+                        $random_in_use = 0;
+                    } else {
+                        $random = random_bytes(32);
+                    }
+                }
+
+                $cookie = $random . serialize($browserInfo);
                 setcookie("cookie", $cookie, time() + (3600 * 24 * 30));
                 setcookie("email", $email, time() + (3600 * 24 * 30));
+                $query = mysqli_query($link, "UPDATE users SET cookie='$random_hashed' WHERE email='$email'");
+
                 unset($name);
                 unset($email);
                 unset($hash);
